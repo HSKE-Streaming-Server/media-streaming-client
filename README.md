@@ -2,7 +2,7 @@
 
 ## Project setup
 ```
-npm installllllll
+npm install
 ```
 
 ### Compiles and hot-reloads for development
