@@ -1,0 +1,22 @@
+$white:white;
+$gray:rgb(97, 97, 97);
+$dark-gray: rgb(50, 50, 50);
+$black:rgb(32, 32, 32);
+$neon-blue:aqua;
+$neon-green:rgb(136, 255, 24);
+
+.font{
+    font-family: Helvetica;
+}
+
+.glow-right{
+    -webkit-box-shadow: 4px 0px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
+    -moz-box-shadow: 4px 0px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
+    box-shadow: 4px 0px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
+}
+
+.glow-center{
+    -webkit-box-shadow: 4px 4px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
+    -moz-box-shadow: 4px 4px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
+    box-shadow: 4px 4px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
+}
