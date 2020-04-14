@@ -2,11 +2,7 @@
   <div id="app">
     <div class="d-flex" id="wrapper" :class="{toggled: this.isToggled}">
       <div class="bg-light border-right" id="sidebar-wrapper">
-        <div class="sidebar-heading">HSKE Media-Streaming</div>
-        <div class="list-group list-group-flush">
-          <router-link class="list-group-item active" to="/">Home</router-link>
-          <router-link class="list-group-item" to="/about">About</router-link>
-        </div>
+        <Sidebar></Sidebar>
       </div>
 
       <div id="page-content-wrapper">
@@ -24,9 +20,14 @@
 </template>
 
 <script>
+import Sidebar from "@/components/Sidebar.vue";
+
 export default {
-  name: "app",
-  components: {},
+
+  name: "App",
+  components: {
+    Sidebar
+  },
   data() {
     return {
       isToggled: false
@@ -57,6 +58,8 @@ body {
 }
 
 #sidebar-wrapper {
+  @extend .glow-right;
+
   min-height: 100vh;
   margin-left: -15rem;
   -webkit-transition: margin 0.25s ease-out;
@@ -66,17 +69,6 @@ body {
   background-color: $black !important;
   color: $white;
   border-right: none !important;
-
-  @extend .glow-right;
-
-  .sidebar-heading {
-    padding: 0.875rem 1.25rem;
-    font-size: 1.15rem;
-  }
-
-  .list-group {
-    width: 15rem;
-  }
 }
 
 #page-content-wrapper {
@@ -85,23 +77,6 @@ body {
 
 #wrapper.toggled #sidebar-wrapper {
   margin-left: 0;
-}
-
-.list-group-item {
-  color: $white;
-  background-color: $black !important;
-  border-bottom: none !important;
-}
-
-.list-group-item:hover {
-  color: $white !important;
-  background-color: $dark-gray !important;
-  text-decoration: none !important;
-}
-
-.list-group-item.active {
-  @extend .glow-center;
-  background-color: $dark-gray !important;
 }
 
 @media (min-width: 768px) {
