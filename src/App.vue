@@ -7,11 +7,13 @@
 
       <div id="page-content-wrapper">
         <div class="container-fluid">
+
           <button id="menu-toggle" @click="toggleMenu">
             <span id="span1"></span>
             <span id="span2"></span>
             <span id="span3"></span>
           </button>
+
           <router-view />
         </div>
       </div>
@@ -37,7 +39,7 @@ export default {
     toggleMenu() {
       this.isToggled = !this.isToggled;
     },
-    myEventHandler(e) {
+    onResize(e) {
       if (e.target.innerWidth > 768) {
         this.isToggled = false;
       }
@@ -47,10 +49,10 @@ export default {
     this.isToggled = window.innerWidth <= 768;
   },
   created() {
-    window.addEventListener("resize", this.myEventHandler);
+    window.addEventListener("resize", this.onResize);
   },
   destroyed() {
-    window.removeEventListener("resize", this.myEventHandler);
+    window.removeEventListener("resize", this.onResize);
   }
 };
 </script>
