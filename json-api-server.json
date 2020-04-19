@@ -1,0 +1,106 @@
+{
+  "source": [
+    {
+      "id": 1,
+      "name": "Source1",
+      "image": "",
+      "type": "video",
+      "description": ""
+    },
+    {
+      "id": 2,
+      "name": "Source2",
+      "image": "",
+      "type": "music",
+      "description": ""
+    }
+  ],
+  "media": [
+    {
+      "id": 1,
+      "source_id": 1,
+      "name": "SDR",
+      "image": "",
+      "type": "video",
+      "description": ""
+    },
+    {
+      "id": 2,
+      "source_id": 1,
+      "name": "ZDF",
+      "image": "",
+      "type": "video",
+      "description": ""
+    },
+    {
+      "id": 3,
+      "source_id": 2,
+      "name": "spotify",
+      "image": "",
+      "type": "music",
+      "description": ""
+    }
+  ],
+  "stream" : [
+    {
+      "id": 1,
+      "media_id": 1,
+      "media": "SDR",
+      "stream_link": "https://irtdashreference-i.akamaihd.net/dash/live/901161/bfs/manifestBR.mpd",
+      "settings": {
+        "x": 500,
+        "y": 1000
+      },
+      "bitrate": 60,
+      "type": "live"
+    },
+    {
+      "id": 2,
+      "media_id": 1,
+      "media": "SDR",
+      "stream_link": "https://dash.akamaized.net/dash264/TestCases/2c/qualcomm/1/MultiResMPEG2.mpd",
+      "settings": {
+        "x": 500,
+        "y": 1000
+      },
+      "bitrate": 60,
+      "type": "video"
+    },
+    {
+      "id": 3,
+      "media_id": 1,
+      "media": "SDR",
+      "stream_link": "https://dash.akamaized.net/dash264/TestCasesUHD/2b/11/MultiRate.mpd",
+      "settings": {
+        "x": 500,
+        "y": 1000
+      },
+      "bitrate": 60,
+      "type": "video"
+    },
+    {
+      "id": 4,
+      "media_id": 2,
+      "media": "ZDF",
+      "stream_link": "https://dash.akamaized.net/dash264/TestCasesUHD/2a/11/MultiRate.mpd",
+      "settings": {
+        "x": 500,
+        "y": 1000
+      },
+      "bitrate": 60,
+      "type": "video"
+    },
+    {
+      "id": 5,
+      "media_id": 2,
+      "media": "ZDF",
+      "stream_link": "https://dash.akamaized.net/dash264/TestCasesIOP33/multiplePeriods/2/manifest_multiple_Periods_Add_Remove_AdaptationSet.mpd",
+      "settings": {
+        "x": 500,
+        "y": 1000
+      },
+      "bitrate": 60,
+      "type": "video"
+    }
+  ]
+}
