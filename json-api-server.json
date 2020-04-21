@@ -1,0 +1,114 @@
+{
+  "source": [
+    {
+      "id": 1,
+      "name": "SDR",
+      "image": "",
+      "type": "video",
+      "description": ""
+    },
+    {
+      "id": 2,
+      "name": "ZDF",
+      "image": "",
+      "type": "video",
+      "description": ""
+    },
+    {
+      "id": 3,
+      "name": "spotify",
+      "image": "",
+      "type": "music",
+      "description": ""
+    }
+  ],
+  "media": [
+    {
+      "id": 1,
+      "source": "SDR",
+      "name": "SDR Live",
+      "image": "",
+      "type": "video",
+      "description": ""
+    },
+    {
+      "id": 2,
+      "source": "SDR",
+      "name": "SDR Video",
+      "image": "",
+      "type": "video",
+      "description": ""
+    },
+    {
+      "id": 3,
+      "source": "SDR",
+      "name": "SDR Video",
+      "image": "",
+      "type": "video",
+      "description": ""
+    },
+    {
+      "id": 4,
+      "source": "ZDF",
+      "name": "ZDF Video",
+      "image": "",
+      "type": "video",
+      "description": ""
+    },
+    {
+      "id": 5,
+      "source": "ZDF",
+      "name": "ZDF Video",
+      "image": "",
+      "type": "video",
+      "description": ""
+    }
+  ],
+  "stream" : [
+    {
+      "id": 1,
+      "stream_link": "https://irtdashreference-i.akamaihd.net/dash/live/901161/bfs/manifestBR.mpd",
+      "settings": {
+        "x": 500,
+        "y": 1000
+      },
+      "bitrate": 60
+    },
+    {
+      "id": 2,
+      "stream_link": "https://dash.akamaized.net/dash264/TestCases/2c/qualcomm/1/MultiResMPEG2.mpd",
+      "settings": {
+        "x": 500,
+        "y": 1000
+      },
+      "bitrate": 60
+    },
+    {
+      "id": 3,
+      "stream_link": "https://dash.akamaized.net/dash264/TestCasesUHD/2b/11/MultiRate.mpd",
+      "settings": {
+        "x": 500,
+        "y": 1000
+      },
+      "bitrate": 60
+    },
+    {
+      "id": 4,
+      "stream_link": "https://dash.akamaized.net/dash264/TestCasesUHD/2a/11/MultiRate.mpd",
+      "settings": {
+        "x": 500,
+        "y": 1000
+      },
+      "bitrate": 60
+    },
+    {
+      "id": 5,
+      "stream_link": "https://dash.akamaized.net/dash264/TestCasesIOP33/multiplePeriods/2/manifest_multiple_Periods_Add_Remove_AdaptationSet.mpd",
+      "settings": {
+        "x": 500,
+        "y": 1000
+      },
+      "bitrate": 60
+    }
+  ]
+}

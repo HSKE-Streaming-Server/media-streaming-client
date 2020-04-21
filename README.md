@@ -22,3 +22,13 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### JSON Server setup
+```
+npm i json-server
+```
+
+### JSON Server run
+```
+json-server --watch json-api-server.json
+```
