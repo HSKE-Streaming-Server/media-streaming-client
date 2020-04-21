@@ -25,6 +25,7 @@
   "media": [
     {
       "id": 1,
+      "source": "SDR",
       "name": "SDR Live",
       "image": "",
       "type": "video",
@@ -32,6 +33,7 @@
     },
     {
       "id": 2,
+      "source": "SDR",
       "name": "SDR Video",
       "image": "",
       "type": "video",
@@ -39,6 +41,7 @@
     },
     {
       "id": 3,
+      "source": "SDR",
       "name": "SDR Video",
       "image": "",
       "type": "video",
@@ -46,13 +49,15 @@
     },
     {
       "id": 4,
+      "source": "ZDF",
       "name": "ZDF Video",
       "image": "",
       "type": "video",
       "description": ""
     },
     {
-      "id": 3,
+      "id": 5,
+      "source": "ZDF",
       "name": "ZDF Video",
       "image": "",
       "type": "video",
