@@ -18,8 +18,10 @@ const routes = [
         component: () => import("../views/Home.vue")
       },
       {
-        path: 'sources/:type?',
-        component: () => import("../views/Sources.vue")
+        path: 'sources/:type',
+        component: () => import("../views/Sources.vue"),
+        name: "source",
+        props: true
       },
       {
         path: 'contents/:source?',

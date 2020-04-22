@@ -1,7 +1,7 @@
 <template>
   <div class="Sources">
     <div class="container">
-      <h1>{{type}} Sources</h1>
+      <h1>{{ type }} Sources</h1>
       <div class="row">
         <div class="col-md-4">
           <Tile></Tile>
@@ -24,15 +24,16 @@ export default {
   components: {
     Tile
   },
+  props: ["type"],
   data() {
     return {
-      type: ""
+      //type: ""
     };
   },
   computed: {},
   methods: {},
   created() {
-    this.type = this.$router.currentRoute.params.type;
+    //this.type = this.$router.currentRoute.params.type;
   }
 };
 </script>
