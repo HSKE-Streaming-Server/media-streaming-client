@@ -11,7 +11,7 @@
       <router-link class="list-group-item mb-1" to="/sources/music">Music</router-link>
       <router-link class="list-group-item mb-1" to="/settings">Setting</router-link>
     </div>
-    <a id="logout-btn" class="btn" href="#">Logout</a>
+    <a id="logout-btn" class="mb-2" href="#">Logout</a>
   </div>
 </template>
 
@@ -78,4 +78,9 @@ export default {
   outline: none !important;
   box-shadow: none !important;
 }
+
+#logout-btn:hover{
+  text-decoration: none;
+}
+
 </style>
