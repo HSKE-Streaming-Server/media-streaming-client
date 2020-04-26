@@ -1,9 +1,8 @@
 <template>
-  <div class="Contents">
-    <div class="container">
-        <h1>{{source}} Contents</h1>
-        <Carusel></Carusel>
-    </div>
+  <div class="Contents py-4">
+      <Carusel class="my-3" :content=media :id=0></Carusel>
+      <Carusel class="my-3"  :content=media :id=1></Carusel>
+      <Carusel  class="my-3" :content=media :id=2></Carusel>
   </div>
 </template>
 <script>
@@ -16,13 +15,49 @@ export default {
   },
   data() {
     return {
-      source: ""
+      source: "",
+      media: [
+        {
+          id: "0",
+          name: "media1",
+          image: "http://placehold.it/380?text=1",
+          type: "video",
+          description: "just a test"
+        },
+        {
+          id: "1",
+          name: "media2",
+          image: "http://placehold.it/380?text=2",
+          type: "video",
+          description: "just a test"
+        },
+        {
+          id: "2",
+          name: "media3",
+          image: "http://placehold.it/380?text=3",
+          type: "video",
+          description: "just a test"
+        },
+        {
+          id: "3",
+          name: "media4",
+          image: "http://placehold.it/380?text=4",
+          type: "video",
+          description: "just a test"
+        },
+        {
+          id: "4",
+          name: "media5",
+          image: "http://placehold.it/380?text=5",
+          type: "video",
+          description: "just a test"
+        }]
     };
   },
   computed: {},
   methods: {},
   created() {
-    this.source =  this.$router.currentRoute.params.source;
+    this.source = this.$router.currentRoute.params.source;
   }
 };
 </script>
