@@ -1,15 +1,27 @@
 <template>
   <div id="sidebar">
-  <div class="pt-3 pb-4">
-     <router-link id="sidebar-heading" to="/home">
-     Media Streaming
-    </router-link>
-  </div>
+    <div class="pt-3 pb-4">
+      <router-link id="sidebar-heading" to="/home">
+        Media Streaming
+      </router-link>
+    </div>
     <div class="list-group list-group-flush">
-      <router-link class="list-group-item mb-1" to="/home">Home</router-link>
-      <router-link class="list-group-item mb-1" to="/sources/video">Video</router-link>
-      <router-link class="list-group-item mb-1" to="/sources/music">Music</router-link>
-      <router-link class="list-group-item mb-1" to="/settings">Setting</router-link>
+      <router-link class="list-group-item mb-1" :to="{ name: 'home' }"
+        >Home</router-link
+      >
+      <router-link
+        class="list-group-item mb-1"
+        :to="{ name: 'source', params: { type: 'video' } }"
+        >Video</router-link
+      >
+      <router-link
+        class="list-group-item mb-1"
+        :to="{ name: 'source', params: { type: 'music' } }"
+        >Music</router-link
+      >
+      <router-link class="list-group-item mb-1" :to="{ name: 'settings' }"
+        >Setting</router-link
+      >
     </div>
     <a id="logout-btn" class="btn" href="#">Logout</a>
   </div>
@@ -39,7 +51,7 @@ export default {
   color: $white;
 }
 
-#sidebar-heading:hover{
+#sidebar-heading:hover {
   text-decoration: none !important;
 }
 
