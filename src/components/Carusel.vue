@@ -10,10 +10,12 @@
             :class="{ active: media.id==0 }"
           >
             <div class="col-md-4">
-              <div class="card card-body">
-                <img class="img-fluid" :src="media.image" />
-                <p class="m-0 text-center">{{media.name}}</p>
-              </div>
+              <router-link :to="'../player/' +media.name">
+                <div class="card card-body">
+                  <img class="img-fluid" :src="media.image" />
+                  <p class="m-0 text-center">{{media.name}}</p>
+                </div>
+              </router-link>
             </div>
           </div>
         </div>
@@ -94,6 +96,15 @@ export default {
 
 .card-body {
   background-color: $dark-gray;
+
+  p {
+    color: white;
+  }
+
+}
+
+a:hover{
+    text-decoration: none !important;
 }
 
 @media (max-width: 900px) {
