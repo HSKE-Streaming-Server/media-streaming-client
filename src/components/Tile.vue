@@ -1,11 +1,12 @@
 <template>
   <div class="Tile card p-3 my-3 shadow">
-    <router-link :to=url>
+    <router-link :to="{ name: 'contents', params: { source: source.name } }">
       <table class="w-100">
         <tr>
           <td class="text-center">
-            <img v-if="imageSrc" class="img-fluid" :src=imageSrc>
-            <svg v-else
+            <img v-if="source.image" class="img-fluid" :src="source.image" />
+            <svg
+              v-else
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
               y="0px"
@@ -41,24 +42,15 @@
           </td>
         </tr>
       </table>
-      <p class="text-center mb-0">{{text}}</p>
+
+      <p class="text-center mb-0">{{ source.description }}</p>
     </router-link>
   </div>
 </template>
 <script>
 export default {
   name: "Tile",
-  props: {
-    text: {
-      type: String
-    },
-    url: {
-      type: String
-    },
-    imageSrc: {
-      type: String
-    }
-  }
+  props: ["source"]
 };
 </script>
 <style scoped lang="scss">
@@ -78,13 +70,12 @@ export default {
     height: 110px;
   }
 
-  a{
+  a {
     color: $white;
   }
 
-  a:hover{
+  a:hover {
     text-decoration: none;
   }
-
 }
 </style>
