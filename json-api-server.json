@@ -27,41 +27,41 @@
       "id": 1,
       "source": "DMAX",
       "name": "DMAX Live",
-      "image": "",
+      "image": "http://placehold.it/380?text=DMAX Live",
       "type": "video",
-      "description": ""
+      "description": "just description"
     },
     {
       "id": 2,
       "source": "DMAX",
-      "name": "DMAX Video",
-      "image": "",
+      "name": "DMAX Video 1",
+      "image": "http://placehold.it/380?text=DMAX Video 1",
       "type": "video",
-      "description": ""
+      "description": "just description"
     },
     {
       "id": 3,
       "source": "DMAX",
-      "name": "DMAX Video",
-      "image": "",
+      "name": "DMAX Video 2",
+      "image": "http://placehold.it/380?text=DMAX Video 2",
       "type": "video",
-      "description": ""
+      "description": "just description"
     },
     {
       "id": 4,
       "source": "ZDF",
-      "name": "ZDF Video",
-      "image": "",
+      "name": "ZDF Video 1",
+      "image": "http://placehold.it/380?text=ZDF Video 1",
       "type": "video",
-      "description": ""
+      "description": "just description"
     },
     {
       "id": 5,
       "source": "ZDF",
-      "name": "ZDF Video",
-      "image": "",
+      "name": "ZDF Video 2",
+      "image": "http://placehold.it/380?text=ZDF Video 2",
       "type": "video",
-      "description": ""
+      "description": "just description"
     }
   ],
   "stream" : [

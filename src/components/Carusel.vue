@@ -1,19 +1,25 @@
 <template>
   <div class="carusel">
     <div class="row mx-auto my-auto">
-      <div :id="'Carousel' + id" class="carousel slide w-100" data-ride="carousel">
+      <div
+        :id="'Carousel' + id"
+        class="carousel slide w-100"
+        data-ride="carousel"
+      >
         <div class="carousel-inner w-100" role="listbox">
           <div
             class="carousel-item"
-            v-for="media in content"
+            v-for="(media, index) in content"
             v-bind:key="media.id"
-            :class="{ active: media.id==0 }"
+            :class="{ active: index == 0 }"
           >
             <div class="col-md-4">
-              <router-link :to="'../player/' +media.name">
+              <router-link
+                :to="{ name: 'player', params: { content: media.id } }"
+              >
                 <div class="card card-body">
                   <img class="img-fluid" :src="media.image" />
-                  <p class="m-0 text-center">{{media.name}}</p>
+                  <p class="m-0 text-center">{{ media.name }}</p>
                 </div>
               </router-link>
             </div>
@@ -52,17 +58,10 @@ import $ from "jquery";
 
 export default {
   name: "Carusel",
-  props: {
-    id: {
-      type: Number
-    },
-    content: {
-      type: Array
-    }
-  },
+  props: ["content", "id"],
   mounted() {
     $("#recipeCarousel").carousel({
-      interval: 10000
+      interval: 1000
     });
 
     $(".carousel .carousel-item").each(function() {
@@ -100,11 +99,10 @@ export default {
   p {
     color: white;
   }
-
 }
 
-a:hover{
-    text-decoration: none !important;
+a:hover {
+  text-decoration: none !important;
 }
 
 @media (max-width: 900px) {
