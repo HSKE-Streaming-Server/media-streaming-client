@@ -15,7 +15,7 @@
           >
             <div class="col-md-4">
               <router-link
-                :to="{ name: 'player', params: { content: media.id } }"
+                :to="{ name: 'stream', params: { stream_id: media.id} }"
               >
                 <div class="card card-body">
                   <img class="img-fluid" :src="media.image" />

@@ -19,6 +19,11 @@ export default {
   data() {
     return {};
   },
+  watch: {
+    $route() {
+      this.fetchAllMedia(this.type);
+    }
+  },
   computed: {
     ...mapState("media", ["media"])
   },
