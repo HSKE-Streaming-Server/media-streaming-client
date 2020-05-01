@@ -14,11 +14,11 @@
         :to="{ name: 'source', params: { type: 'video' } }"
         >Video</router-link
       >
-      <router-link
+      <!--<router-link
         class="list-group-item mb-1"
         :to="{ name: 'source', params: { type: 'music' } }"
         >Music</router-link
-      >
+      >-->
       <router-link class="list-group-item mb-1" :to="{ name: 'settings' }"
         >Setting</router-link
       >

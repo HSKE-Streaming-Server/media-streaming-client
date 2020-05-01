@@ -31,7 +31,7 @@ const routes = [
         props: true
       },
       {
-        path: 'player/:content?',
+        path: 'player/:content',
         component: () => import("../components/Player.vue"),
         name: "player",
         props: true
@@ -56,6 +56,7 @@ const routes = [
     component: () => import("../components/Login.vue")
   }
 ];
+
 
 const router = new VueRouter({
   mode: "history",

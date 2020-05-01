@@ -19,18 +19,23 @@ import Tile from "@/components/Tile.vue";
 export default {
   name: "Sources",
   components: {
-      Tile
+    Tile
   },
   props: ["type"],
+  /*watch: {
+    $route() {
+      this.fetchAllSources(this.type);
+    }
+  },*/
   created() {
     this.fetchAllSources(this.type);
-    console.log(this.sources)
+    console.log(this.sources);
   },
   data() {
     return {};
   },
   computed: {
-    ...mapState("source",["sources"])
+    ...mapState("source", ["sources"])
   },
   methods: {
     ...mapActions("source", ["fetchAllSources"])
