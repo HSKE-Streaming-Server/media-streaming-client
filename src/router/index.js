@@ -14,25 +14,25 @@ const routes = [
         redirect: "/home"
       },
       {
-        path: "/home",
+        path: '/home',
         component: () => import("../views/Home.vue"),
-        name: "home"
+        name: 'home'
       },
       {
-        path: "sources/:type",
+        path: 'sources/:type',
         component: () => import("../views/Sources.vue"),
         name: "source",
         props: true
       },
       {
-        path: "contents/:source",
+        path: 'contents/:source',
         component: () => import("../views/Contents.vue"),
         name: "contents",
         props: true
       },
       {
-        path: "stream/:stream_id",
-        component: () => import("../views/Stream.vue"),
+        path: 'player/:content',
+        component: () => import("../components/VideoPlayer.vue"),
         name: "stream",
         props: true
       }
@@ -44,9 +44,9 @@ const routes = [
     component: () => import("../views/Navigation.vue"),
     children: [
       {
-        path: "/",
+        path: '/',
         component: () => import("../components/Settings.vue"),
-        name: "settings"
+        name: 'settings'
       }
     ]
   },
@@ -56,6 +56,7 @@ const routes = [
     component: () => import("../components/Login.vue")
   }
 ];
+
 
 const router = new VueRouter({
   mode: "history",
