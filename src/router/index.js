@@ -14,20 +14,27 @@ const routes = [
         redirect: "/home"
       },
       {
-        path: 'home',
-        component: () => import("../views/Home.vue")
+        path: "/home",
+        component: () => import("../views/Home.vue"),
+        name: "home"
       },
       {
-        path: 'sources/:type?',
-        component: () => import("../views/Sources.vue")
+        path: "sources/:type",
+        component: () => import("../views/Sources.vue"),
+        name: "source",
+        props: true
       },
       {
-        path: 'contents/:source?',
-        component: () => import("../views/Contents.vue")
+        path: "contents/:source",
+        component: () => import("../views/Contents.vue"),
+        name: "contents",
+        props: true
       },
       {
-        path: 'player/:content?',
-        component: () => import("../components/Player.vue")
+        path: "stream/:stream_id",
+        component: () => import("../views/Stream.vue"),
+        name: "stream",
+        props: true
       }
     ]
   },
@@ -37,8 +44,9 @@ const routes = [
     component: () => import("../views/Navigation.vue"),
     children: [
       {
-        path: '',
-        component: () => import("../components/Settings.vue")
+        path: "/",
+        component: () => import("../components/Settings.vue"),
+        name: "settings"
       }
     ]
   },

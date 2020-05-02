@@ -1,11 +1,13 @@
 <template>
   <div class="Contents py-4">
-      <Carusel class="my-3" :content=media :id=0></Carusel>
-      <Carusel class="my-3"  :content=media :id=1></Carusel>
-      <Carusel  class="my-3" :content=media :id=2></Carusel>
+    <h1 class="text-center">{{ source }} Mediathek</h1>
+    <Carusel class="my-3" :content="media" :id="0"></Carusel>
+   <!-- <Carusel class="my-3" :content="media" :id="1"></Carusel>
+    <Carusel class="my-3" :content="media" :id="2"></Carusel>-->
   </div>
 </template>
 <script>
+import { mapState, mapActions } from "vuex";
 import Carusel from "@/components/Carusel.vue";
 
 export default {
@@ -13,51 +15,23 @@ export default {
   components: {
     Carusel
   },
+  props: ["source"],
   data() {
-    return {
-      source: "",
-      media: [
-        {
-          id: "0",
-          name: "media1",
-          image: "http://placehold.it/380?text=1",
-          type: "video",
-          description: "just a test"
-        },
-        {
-          id: "1",
-          name: "media2",
-          image: "http://placehold.it/380?text=2",
-          type: "video",
-          description: "just a test"
-        },
-        {
-          id: "2",
-          name: "media3",
-          image: "http://placehold.it/380?text=3",
-          type: "video",
-          description: "just a test"
-        },
-        {
-          id: "3",
-          name: "media4",
-          image: "http://placehold.it/380?text=4",
-          type: "video",
-          description: "just a test"
-        },
-        {
-          id: "4",
-          name: "media5",
-          image: "http://placehold.it/380?text=5",
-          type: "video",
-          description: "just a test"
-        }]
-    };
+    return {};
   },
-  computed: {},
-  methods: {},
+  watch: {
+    $route() {
+      this.fetchAllMedia(this.type);
+    }
+  },
+  computed: {
+    ...mapState("media", ["media"])
+  },
+  methods: {
+    ...mapActions("media", ["fetchAllMedia"])
+  },
   created() {
-    this.source = this.$router.currentRoute.params.source;
+    this.fetchAllMedia(this.source);
   }
 };
 </script>
