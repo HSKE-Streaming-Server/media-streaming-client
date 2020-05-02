@@ -110,5 +110,47 @@
       },
       "bitrate": 60
     }
-  ]
+  ],
+  "presets": {
+    "videoPresets": [
+      {
+        "presetID": 0,
+        "displayName": "bad",
+        "resolutionX": 800,
+        "resolutionY": 600,
+        "bitrate": 128
+      },
+      {
+        "presetID": 1,
+        "displayName": "medium",
+        "resolutionX": 1200,
+        "resolutionY": 900,
+        "bitrate": 128
+      },
+      {
+        "presetID": 2,
+        "displayName": "good",
+        "resolutionX": 1920,
+        "resolutionY": 1080,
+        "bitrate": 256
+      }
+    ],
+    "audioPresets": [
+      {
+        "presetID": 0,
+        "displayName": "bad",
+        "bitrate": 64
+      },
+      {
+        "presetID": 1,
+        "displayName": "medium",
+        "bitrate": 128
+      },
+      {
+        "presetID": 2,
+        "displayName": "good",
+        "bitrate": 256
+      }
+    ]
+  }
 }
