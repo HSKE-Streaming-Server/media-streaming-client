@@ -23,7 +23,7 @@
         >Setting</router-link
       >
     </div>
-    <a id="logout-btn" class="btn" href="#">Logout</a>
+    <a id="logout-btn" class="mb-2" href="#">Logout</a>
   </div>
 </template>
 
@@ -89,5 +89,9 @@ export default {
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
+}
+
+#logout-btn:hover {
+  text-decoration: none;
 }
 </style>

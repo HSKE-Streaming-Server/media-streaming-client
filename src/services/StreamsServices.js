@@ -17,6 +17,12 @@ export default {
     return apiClient.get("/media?source=" + source);
   },
   getStream(id) {
-    return apiClient.get("/stream" + id);
+    return apiClient.get("/stream/" + id);
+  },
+  getMediaName(id) {
+    return apiClient.get("/media/" + id);
+  },
+  getPresets() {
+    return apiClient.get("/presets");
   }
 };
