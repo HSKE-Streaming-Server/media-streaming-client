@@ -2,7 +2,7 @@
   <div class="settings">
     <div class="container">
       <table class="m-4 w-100">
-        <tr>
+        <tr v-if="presets.videoPresets">
           <td>
             <h3>Video</h3>
           </td>
@@ -24,25 +24,25 @@
                   v-on:click="setSetting('videoPresetId',preset.presetID)"
                 >{{preset.displayName}}</a>
               </div>
-            </div>
+            </div> 
           </td>
         </tr>
-        <tr>
+        <tr v-if="presets.videoPresets">
           <td>Resolution</td>
           <td>{{presets.videoPresets[settings.videoPresetId].resolutionX}} x {{presets.videoPresets[settings.videoPresetId].resolutionY}}</td>
         </tr>
-        <tr>
+        <tr v-if="presets.videoPresets">
           <td>Bitrate</td>
           <td>{{presets.videoPresets[settings.videoPresetId].bitrate}} Bit</td>
         </tr>
 
-        <tr>
+        <tr v-if="presets.audioPresets">
           <td colspan="2">
             <hr />
           </td>
         </tr>
 
-        <tr>
+        <tr v-if="presets.audioPresets">
           <td>
             <h3>Audio</h3>
           </td>
@@ -61,13 +61,13 @@
                   v-for="(preset, index) in presets.audioPresets"
                   :key="`preset-${index}`"
                   class="dropdown-item"
-                  v-on:click="settings.audioPresetId = preset.presetID"
+                  v-on:click="setSetting('audioPresetId',preset.presetID)"
                 >{{preset.displayName}}</a>
               </div>
-            </div>
+            </div> 
           </td>
         </tr>
-        <tr>
+        <tr v-if="presets.audioPresets">
           <td>Bitrate</td>
           <td>{{presets.audioPresets[settings.audioPresetId].bitrate}} Bit</td>
         </tr>
@@ -81,55 +81,14 @@ import { mapState, mapActions } from "vuex";
 export default {
   name: "Settings",
   data() {
-    return {
-      presets: {
-        videoPresets: [
-          {
-            presetID: 0,
-            displayName: "bad",
-            resolutionX: 800,
-            resolutionY: 600,
-            bitrate: 128
-          },
-          {
-            presetID: 1,
-            displayName: "medium",
-            resolutionX: 1200,
-            resolutionY: 900,
-            bitrate: 128
-          },
-          {
-            presetID: 2,
-            displayName: "good",
-            resolutionX: 1920,
-            resolutionY: 1080,
-            bitrate: 256
-          }
-        ],
-        audioPresets: [
-          {
-            presetID: 0,
-            displayName: "bad",
-            bitrate: 64
-          },
-          {
-            presetID: 1,
-            displayName: "medium",
-            bitrate: 128
-          },
-          {
-            presetID: 2,
-            displayName: "good",
-            bitrate: 256
-          }
-        ]
-      }
-    };
+    return {};
   },
   computed: {
+    ...mapState("presets", ["presets"]),
     ...mapState("settings", ["settings"])
   },
   methods: {
+    ...mapActions("presets", ["fetchAllPresets"]),
     ...mapActions("settings", ["fetchAllSettings"]),
     ...mapActions("settings", ["saveAllSettings"]),
     setSetting: function(key, value) {
@@ -138,8 +97,10 @@ export default {
     }
   },
   created() {
+    this.fetchAllPresets();
     this.fetchAllSettings();
     if(this.settings == null){
+      //set defaults
       this.saveAllSettings({
         videoPresetsId:0,
         audioPresetsId:0

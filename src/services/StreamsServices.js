@@ -21,5 +21,8 @@ export default {
   },
   getMediaName(id) {
     return apiClient.get("/media/" + id);
+  },
+  getPresets() {
+    return apiClient.get("/presets");
   }
 };
