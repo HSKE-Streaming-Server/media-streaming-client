@@ -21,7 +21,7 @@
                   v-for="(preset, index) in presets.videoPresets"
                   :key="`preset-${index}`"
                   class="dropdown-item"
-                  v-on:click="settings.videoPresetId = preset.presetID"
+                  v-on:click="setSetting('videoPresetId',preset.presetID)"
                 >{{preset.displayName}}</a>
               </div>
             </div>
@@ -76,6 +76,8 @@
   </div>
 </template>
 <script>
+import { mapState, mapActions } from "vuex";
+
 export default {
   name: "Settings",
   data() {
@@ -121,15 +123,29 @@ export default {
             bitrate: 256
           }
         ]
-      },
-      settings: {
-        videoPresetId: 1,
-        audioPresetId: 1
       }
     };
   },
-  computed: {},
-  methods: {}
+  computed: {
+    ...mapState("settings", ["settings"])
+  },
+  methods: {
+    ...mapActions("settings", ["fetchAllSettings"]),
+    ...mapActions("settings", ["saveAllSettings"]),
+    setSetting: function(key, value) {
+      this.settings[key] = value;
+      this.saveAllSettings(this.settings);
+    }
+  },
+  created() {
+    this.fetchAllSettings();
+    if(this.settings == null){
+      this.saveAllSettings({
+        videoPresetsId:0,
+        audioPresetsId:0
+      });
+    }
+  }
 };
 </script>
 <style scoped lang="scss">
