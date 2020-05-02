@@ -8,9 +8,6 @@ import * as stream from "@/store/modules/stream.js";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
   modules: {
     source,
     media,
