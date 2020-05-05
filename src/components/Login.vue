@@ -1,5 +1,97 @@
 <template>
-  <div class="settings">
-    <h1>This is a Login page</h1>
+  <div class="login">
+    <table class="w-100 h-100">
+      <tr class="h-100 w-100">
+        <td class="text-center align-middle">
+          <div class="container h-100">
+            <div class="row h-100 justify-content-center align-items-center">
+              <div class="col-12 login-container">
+                <div class="input-group">
+                  <div class="input-group-prepend" v-on:click="login">
+                    <span class="input-group-text login-label">Login</span>
+                  </div>
+                  <input
+                    id="usernameInput"
+                    class="form-control input-field"
+                    type="text"
+                    placeholder="username"
+                    v-on:keyup="onKeyUp"
+                  />
+                  <input
+                    id="passwordInput"
+                    class="form-control input-field"
+                    type="password"
+                    placeholder="password"
+                    v-on:keyup="onKeyUp"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
   </div>
 </template>
+<script>
+export default {
+  name: "Login",
+  data() {
+    return {};
+  },
+  computed: {
+  },
+  methods: {
+    login: function() {
+      console.log("TODO:implement login");
+    },
+    onKeyUp:function(event){
+      if (event.keyCode === 13) {
+        this.login();
+      }
+    }
+  },
+  created() {
+  }
+};
+</script>
+<style scoped lang="scss">
+@import "../style.scss";
+
+.login{
+  height: 100vh;
+  background-color: $dark-gray;
+}
+
+.form-control:focus {
+  border-color:  $neon-blue-green;
+  box-shadow: none;
+  background-color: $gray;
+  color: $white;
+}
+
+.login-label {
+  color: $dark-gray;
+  background-color: $neon-blue-green;
+  border-color: $neon-blue-green;
+  border-radius: 0;
+  cursor: pointer;
+  font-weight:bold;
+  color: $dark-gray;
+}
+
+.input-field {
+  color: $white;
+  background-color: transparent;
+  border-color: $neon-blue-green;
+  border-radius: 0;
+}
+
+.input-group{
+@extend .glow;
+}
+
+.login-container {
+  max-width: 30em;
+}
+</style>
