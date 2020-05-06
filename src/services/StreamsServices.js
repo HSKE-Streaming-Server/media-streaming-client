@@ -24,5 +24,8 @@ export default {
   },
   getPresets() {
     return apiClient.get("/presets");
+  },
+  postLogin(data){
+    return apiClient.post("/authenticate",data);
   }
 };

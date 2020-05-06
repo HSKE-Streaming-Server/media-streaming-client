@@ -7,7 +7,7 @@
             <div class="row h-100 justify-content-center align-items-center">
               <div class="col-12 login-container">
                 <div class="input-group">
-                  <div class="input-group-prepend" v-on:click="login">
+                  <div class="input-group-prepend" v-on:click="performLogin">
                     <span class="input-group-text login-label">Login</span>
                   </div>
                   <input
@@ -16,6 +16,7 @@
                     type="text"
                     placeholder="username"
                     v-on:keyup="onKeyUp"
+                    v-model="username"
                   />
                   <input
                     id="passwordInput"
@@ -23,6 +24,7 @@
                     type="password"
                     placeholder="password"
                     v-on:keyup="onKeyUp"
+                    v-model="password"
                   />
                 </div>
               </div>
@@ -34,37 +36,51 @@
   </div>
 </template>
 <script>
+import { mapState, mapActions } from "vuex";
+
 export default {
   name: "Login",
   data() {
-    return {};
+    return {
+      username: null,
+      password: null
+    };
   },
   computed: {
+    ...mapState("authentication", ["userData"])
   },
   methods: {
-    login: function() {
-      console.log("TODO:implement login");
+    ...mapActions("authentication", ["login"]),
+    performLogin: function() {
+      if (!this.username || !this.password) return;
+      this.login({ username: "testuser", password: "password" }).then(() => {
+        if (this.userData.loggedIn) {
+          this.$router.push("home");
+        } else {
+          this.username = null;
+          this.password = null;
+        }
+      });
     },
-    onKeyUp:function(event){
+    onKeyUp: function(event) {
       if (event.keyCode === 13) {
-        this.login();
+        this.performLogin();
       }
     }
   },
-  created() {
-  }
+  created() {}
 };
 </script>
 <style scoped lang="scss">
 @import "../style.scss";
 
-.login{
+.login {
   height: 100vh;
   background-color: $dark-gray;
 }
 
 .form-control:focus {
-  border-color:  $neon-blue-green;
+  border-color: $neon-blue-green;
   box-shadow: none;
   background-color: $gray;
   color: $white;
@@ -76,7 +92,7 @@ export default {
   border-color: $neon-blue-green;
   border-radius: 0;
   cursor: pointer;
-  font-weight:bold;
+  font-weight: bold;
   color: $dark-gray;
 }
 
@@ -87,8 +103,8 @@ export default {
   border-radius: 0;
 }
 
-.input-group{
-@extend .glow;
+.input-group {
+  @extend .glow;
 }
 
 .login-container {

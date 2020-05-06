@@ -64,7 +64,7 @@
       "description": "just description"
     }
   ],
-  "stream" : [
+  "stream": [
     {
       "id": 1,
       "stream_link": "https://irtdashreference-i.akamaihd.net/dash/live/901161/bfs/manifestBR.mpd",
@@ -152,5 +152,9 @@
         "bitrate": 256
       }
     ]
+  },
+  "authenticate": {
+    "username": "testuser",
+    "password": "password"
   }
 }
