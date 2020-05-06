@@ -53,8 +53,8 @@ export default {
     ...mapActions("authentication", ["login"]),
     performLogin: function() {
       if (!this.username || !this.password) return;
-      this.login({ username: "testuser", password: "password" }).then(() => {
-        if (this.userData.loggedIn) {
+      this.login({ username: "testuser", password: "password" }).then((success) => {
+        if (success) {
           this.$router.push("home");
         } else {
           this.username = null;

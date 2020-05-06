@@ -21,7 +21,7 @@ export const mutations = {
 
 export const actions = {
     login({ commit }, userData) {
-        StreamsServices.postLogin(userData).then(response => {
+        return StreamsServices.postLogin(userData).then(response => {
             response.data = {success:true,token:"testtoken"};//TODO
             commit("SET_ALL_UserData",{
                 success:response.data.success,
@@ -30,10 +30,11 @@ export const actions = {
             });
             if(response.data.success)
                 CookieService.setToken(response.data.token)
+            return response.data.success;
         });
     },
     authenticate({commit},token){
-        StreamsServices.postToken(token).then(response => {
+        return StreamsServices.postToken(token).then(response => {
             response.data = {success:true,username:"testuser"}   //TODO
             if(response.data.success){
                 commit("SET_ALL_UserData",{token:token,success:true,name:response.username}) 
@@ -41,6 +42,7 @@ export const actions = {
                 commit("SET_ALL_UserData",{token:null,loggedIn:false,name:null})
                 CookieService.removeToken();
             }
+            return response.data.success;
         });
     },
     logout({ commit }){
