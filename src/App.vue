@@ -25,4 +25,9 @@ body {
   background-color: $gray;
   color: $white;
 }
+
+.btn-dark {
+  background-color: $dark-gray !important;
+}
+
 </style>

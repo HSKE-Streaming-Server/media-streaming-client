@@ -20,5 +20,11 @@ export default{
     },
     removeToken(){
         Vue.$cookies.remove("token");
-    }
+    },
+    getHistory(){
+         return Vue.$cookies.get("history");
+    },
+    setHistory(newSettings){
+        Vue.$cookies.set("history",newSettings);
+    },
 }

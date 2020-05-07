@@ -115,8 +115,4 @@ export default {
 hr {
   border-color: $dark-gray;
 }
-
-.btn-dark {
-  background-color: $dark-gray !important;
-}
 </style>
