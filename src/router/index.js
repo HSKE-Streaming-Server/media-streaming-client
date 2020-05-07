@@ -31,8 +31,8 @@ const routes = [
         props: true
       },
       {
-        path: 'player/:content',
-        component: () => import("../components/VideoPlayer.vue"),
+        path: ':source/video/:stream_id',
+        component: () => import("../views/Stream.vue"),
         name: "stream",
         props: true
       }
