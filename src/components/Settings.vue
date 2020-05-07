@@ -102,8 +102,8 @@ export default {
     if(this.settings == null){
       //set defaults
       this.saveAllSettings({
-        videoPresetsId:0,
-        audioPresetsId:0
+        videoPresetId:0,
+        audioPresetId:0
       });
     }
   }
