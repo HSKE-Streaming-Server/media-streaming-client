@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <h1 class="text-center">MediaPlayer for: {{ mediaName }}</h1>
     <video-player :options="videoOptions" />
   </div>
@@ -10,7 +10,7 @@ import { mapState, mapActions } from "vuex";
 import VideoPlayer from "@/components/VideoPlayer.vue";
 export default {
   name: "Stream",
-  props: ["stream_id", "media"],
+  props: ["stream_id", "source"],
   components: {
     VideoPlayer
   },
@@ -28,7 +28,8 @@ export default {
             src:  this.stream.stream_link,
             type: "application/dash+xml"
           }
-        ]
+        ],
+        poster:"http://placehold.it/380?text=DMAX Video 2"
       };
     }
   },
