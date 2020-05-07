@@ -1,9 +1,11 @@
 <template>
   <div class="home">
-    <Carusel class="my-3" :content="history" :id="0" v-if="history"></Carusel>
-    <table class="w-100 h-100" v-if="!history">
+    <table class="w-100 h-100">
       <tr>
-        <td class="text-center align-middle">
+        <td class="text-center align-middle" v-if="history"> 
+          <Carusel class="my-3" :content="history" :id="0"></Carusel>
+        </td>
+        <td class="text-center align-middle" v-if="!history">
           <p>You have no History yet.</p>
           <router-link :to="{ name: 'source', params: { type: 'video' } }">
             <button class="btn btn-dark">start watching</button>
@@ -33,8 +35,7 @@ export default {
     ...mapActions("history", ["fetchAllHistory", "saveAllHistory"])
   },
   created() {
-    this.fetchAllHistory(this.history);
-    console.log(this.history);
+    this.fetchAllHistory();
   }
 };
 </script>

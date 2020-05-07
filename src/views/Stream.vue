@@ -33,7 +33,8 @@ export default {
     }
   },
   methods: {
-    ...mapActions("stream", ["fetchStream"])
+    ...mapActions("stream", ["fetchStream"]),
+    ...mapActions("history", ["addToHistory"])
   }
 };
 </script>

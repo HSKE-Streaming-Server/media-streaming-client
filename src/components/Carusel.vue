@@ -13,15 +13,11 @@
             v-bind:key="media.id"
             :class="{ active: index == 0 }"
           >
-            <div class="col-md-4">
-              <router-link
-                :to="{ name: 'stream', params: { stream_id: media.id, source: media.source} }"
-              >
+            <div class="col-md-4" v-on:click="navigate(media)">
                 <div class="card card-body">
                   <img class="img-fluid" :src="media.image" />
                   <p class="m-0 text-center">{{ media.name }}</p>
                 </div>
-              </router-link>
             </div>
           </div>
         </div>
@@ -54,11 +50,19 @@
   </div>
 </template>
 <script>
+import {  mapActions } from "vuex";
 import $ from "jquery";
 
 export default {
   name: "Carusel",
   props: ["content", "id"],
+  methods: {
+    ...mapActions("history", ["addToHistory"]),
+    navigate:function(media){
+      this.addToHistory(media);
+      this.$router.push({ name: 'stream', params: { stream_id: media.id, source: media.source} });
+    }
+  },
   mounted() {
     $("#recipeCarousel").carousel({
       interval: 1000
@@ -103,6 +107,10 @@ export default {
 
 a:hover {
   text-decoration: none !important;
+}
+
+.carousel-item:hover{
+  cursor: pointer;
 }
 
 @media (max-width: 900px) {
