@@ -32,3 +32,8 @@ npm i json-server
 ```
 json-server --watch json-api-server.json
 ```
+
+### run JSON server and Vue.js dev server
+```
+npm start
+```
