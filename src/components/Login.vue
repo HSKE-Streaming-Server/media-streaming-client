@@ -6,6 +6,7 @@
           <div class="container h-100">
             <div class="row h-100 justify-content-center align-items-center">
               <div class="col-12 login-container">
+        <img id="logo" class="my-5" src="../assets/logo.png"/>
                 <div class="input-group">
                   <div class="input-group-prepend" v-on:click="performLogin">
                     <span class="input-group-text login-label">Login</span>
@@ -73,6 +74,11 @@ export default {
 </script>
 <style scoped lang="scss">
 @import "../style.scss";
+
+#logo{
+  max-width: 90px;
+  height: auto;
+}
 
 .login {
   height: 100vh;
