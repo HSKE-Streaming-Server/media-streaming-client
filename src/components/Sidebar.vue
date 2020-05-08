@@ -43,7 +43,7 @@ export default {
     performLogout:function(){
       this.logout().then(() => {
         if (!this.userData.loggedIn) {
-          this.$router.push("login");
+          this.$router.push({name:"Login"});
         } 
       });
     }
