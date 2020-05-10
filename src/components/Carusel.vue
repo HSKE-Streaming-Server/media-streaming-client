@@ -1,97 +1,42 @@
 <template>
-  <div class="carusel">
-    <div class="row mx-auto my-auto">
-      <div
-        :id="'Carousel' + id"
-        class="carousel slide w-100"
-        data-ride="carousel"
+  <div class="container">
+    <carousel
+      :per-page="2"
+      :mouse-drag="true"
+      :navigationEnabled="true"
+      :centerMode="true"
+      :autoplay="true"
+      :loop="true"
+      paginationActiveColor="rgb(50, 50, 50)"
+      paginationColor="white"
+      easing="ease-out"
+    >
+      <slide
+        v-for="media in content"
+        v-bind:key="media.id"
+        :data-name="media.name"
       >
-        <div class="carousel-inner w-100" role="listbox">
-          <div
-            class="carousel-item"
-            v-for="(media, index) in content"
-            v-bind:key="media.id"
-            :class="{ active: index == 0 }"
+        <div class="col-12">
+          <router-link
+            :to="{
+              name: 'stream',
+              params: { stream_id: media.id, source: media.source }
+            }"
           >
-            <div class="col-md-4" v-on:click="navigate(media)">
-                <div class="card card-body">
-                  <img class="img-fluid" :src="media.image" />
-                  <p class="m-0 text-center">{{ media.name }}</p>
-                </div>
+            <div class="card card-body">
+              <img class="img-fluid" :src="media.image" />
+              <p class="m-0 text-center">{{ media.name }}</p>
             </div>
-          </div>
+          </router-link>
         </div>
-        <a
-          class="carousel-control-prev w-auto"
-          :href="'#Carousel' + id"
-          role="button"
-          data-slide="prev"
-        >
-          <span
-            class="carousel-control-prev-icon bg-dark border border-dark rounded-circle"
-            aria-hidden="true"
-          ></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a
-          class="carousel-control-next w-auto"
-          :href="'#Carousel' + id"
-          role="button"
-          data-slide="next"
-        >
-          <span
-            class="carousel-control-next-icon bg-dark border border-dark rounded-circle"
-            aria-hidden="true"
-          ></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-    </div>
+      </slide>
+    </carousel>
   </div>
 </template>
 <script>
-import {  mapActions } from "vuex";
-import $ from "jquery";
-
 export default {
   name: "Carusel",
-  props: ["content", "id"],
-  methods: {
-    ...mapActions("history", ["addToHistory"]),
-    navigate:function(media){
-      this.addToHistory(media);
-      this.$router.push({ name: 'stream', params: { stream_id: media.id, source: media.source} });
-    }
-  },
-  mounted() {
-    $("#recipeCarousel").carousel({
-      interval: 1000
-    });
-
-    $(".carousel .carousel-item").each(function() {
-      var minPerSlide = 3;
-      var next = $(this).next();
-      if (!next.length) {
-        next = $(this).siblings(":first");
-      }
-      next
-        .children(":first-child")
-        .clone()
-        .appendTo($(this));
-
-      for (var i = 0; i < minPerSlide; i++) {
-        next = next.next();
-        if (!next.length) {
-          next = $(this).siblings(":first");
-        }
-
-        next
-          .children(":first-child")
-          .clone()
-          .appendTo($(this));
-      }
-    });
-  }
+  props: ["content", "id"]
 };
 </script>
 <style scoped lang="scss">
@@ -144,5 +89,8 @@ a:hover {
 .carousel-inner .carousel-item-right,
 .carousel-inner .carousel-item-left {
   transform: translateX(0);
+}
+
+.VueCarousel-dot {
 }
 </style>
