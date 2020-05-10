@@ -1,5 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import createPersistedState from "vuex-persistedstate";
+
 
 import * as source from "@/store/modules/source.js";
 import * as media from "@/store/modules/media.js";
@@ -16,5 +18,6 @@ export default new Vuex.Store({
     stream,
     settings,
     presets
-  }
+  },
+  plugins: [createPersistedState()]
 });

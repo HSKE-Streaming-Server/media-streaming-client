@@ -35,6 +35,12 @@ const routes = [
         component: () => import("../views/Stream.vue"),
         name: "stream",
         props: true
+      },
+      {
+        path: ':source/video/:stream_id/play',
+        component: () => import("../components/VueVideoPlayer.vue"),
+        name: "play-now",
+        props: true
       }
     ]
   },
