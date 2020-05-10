@@ -6,11 +6,8 @@
           <div class="container h-100">
             <div class="row h-100 justify-content-center align-items-center">
               <div class="col-12 login-container">
-        <img id="logo" class="my-5" src="../assets/logo.png"/>
+                <img id="logo" class="my-5" src="../assets/logo.png" />
                 <div class="input-group">
-                  <div class="input-group-prepend" v-on:click="performLogin">
-                    <span class="input-group-text login-label">Login</span>
-                  </div>
                   <input
                     id="usernameInput"
                     class="form-control input-field"
@@ -28,6 +25,7 @@
                     v-model="password"
                   />
                 </div>
+                <button class="btn my-4 login-button px-4"  v-on:click="performLogin">Login</button>
               </div>
             </div>
           </div>
@@ -54,14 +52,16 @@ export default {
     ...mapActions("authentication", ["login"]),
     performLogin: function() {
       if (!this.username || !this.password) return;
-      this.login({ username: "testuser", password: "password" }).then((success) => {
-        if (success) {
-          this.$router.push("home");
-        } else {
-          this.username = null;
-          this.password = null;
+      this.login({ username: "testuser", password: "password" }).then(
+        success => {
+          if (success) {
+            this.$router.push("home");
+          } else {
+            this.username = null;
+            this.password = null;
+          }
         }
-      });
+      );
     },
     onKeyUp: function(event) {
       if (event.keyCode === 13) {
@@ -75,7 +75,7 @@ export default {
 <style scoped lang="scss">
 @import "../style.scss";
 
-#logo{
+#logo {
   max-width: 90px;
   height: auto;
 }
@@ -92,7 +92,8 @@ export default {
   color: $white;
 }
 
-.login-label {
+.login-button {
+  @extend .glow;
   color: $dark-gray;
   background-color: $neon-blue-green;
   border-color: $neon-blue-green;
