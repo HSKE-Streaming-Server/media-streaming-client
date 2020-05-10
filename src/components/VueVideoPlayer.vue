@@ -1,5 +1,5 @@
 <template>
-  <video-player :options="videoOptions" />
+  <video-player  style="background-image: url('../assets/monitor.jpeg')" :options="videoOptions" />
 </template>
 
 <script>

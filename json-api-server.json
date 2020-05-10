@@ -67,7 +67,7 @@
   "stream" : [
     {
       "id": 1,
-      "stream_link": "https://dash.akamaized.net/envivio/EnvivioDash3/manifest.mpd",
+      "stream_link": "https://irtdashreference-i.akamaihd.net/dash/live/901161/bfs/manifestBR.mpd",
       "stream_type": "application/dash+xml"
     },
     {
