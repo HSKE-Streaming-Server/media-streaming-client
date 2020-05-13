@@ -55,6 +55,10 @@ a:hover {
   text-decoration: none !important;
 }
 
+.carousel-item:hover{
+  cursor: pointer;
+}
+
 @media (max-width: 900px) {
   .carousel-inner .carousel-item > div {
     display: none;

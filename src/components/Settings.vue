@@ -102,8 +102,8 @@ export default {
     if(this.settings == null){
       //set defaults
       this.saveAllSettings({
-        videoPresetsId:0,
-        audioPresetsId:0
+        videoPresetId:0,
+        audioPresetId:0
       });
     }
   }
@@ -114,9 +114,5 @@ export default {
 
 hr {
   border-color: $dark-gray;
-}
-
-.btn-dark {
-  background-color: $dark-gray !important;
 }
 </style>

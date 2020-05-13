@@ -23,18 +23,31 @@
         >Setting</router-link
       >
     </div>
-    <a id="logout-btn" class="mb-2" href="#">Logout</a>
+    <a id="logout-btn" class="mb-2"  v-on:click="performLogout">Logout</a>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
+
 export default {
   name: "Sidebar",
   data() {
     return {};
   },
-  computed: {},
-  methods: {}
+  computed: {
+    ...mapState("authentication", ["userData"])
+  },
+  methods: {
+    ...mapActions("authentication", ["logout"]),
+    performLogout:function(){
+      this.logout().then(() => {
+        if (!this.userData.loggedIn) {
+          this.$router.push({name:"Login"});
+        } 
+      });
+    }
+  }
 };
 </script>
 
@@ -82,6 +95,10 @@ export default {
   padding-left: 20px;
   position: absolute;
   bottom: 0 !important;
+}
+
+#logout-btn:hover{
+  cursor: pointer;
 }
 
 #logout-btn:focus {

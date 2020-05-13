@@ -8,6 +8,8 @@ import * as media from "@/store/modules/media.js";
 import * as stream from "@/store/modules/stream.js";
 import * as settings from "@/store/modules/settings.js";
 import * as presets from "@/store/modules/presets.js";
+import * as authentication from "@/store/modules/authentication";
+import * as history from "@/store/modules/history";
 
 Vue.use(Vuex);
 
@@ -17,7 +19,11 @@ export default new Vuex.Store({
     media,
     stream,
     settings,
-    presets
+    presets,
+    authentication,
+    history
   },
+  
   plugins: [createPersistedState()]
+
 });

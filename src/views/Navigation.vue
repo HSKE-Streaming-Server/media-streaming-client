@@ -85,17 +85,9 @@ export default {
   span {
     width: 2rem;
     margin: 0.2rem;
-    border: 0.21rem solid;
+    border: 0.2rem solid;
     display: block;
-  }
-  #span1 {
-    border-color: $neon-blue;
-  }
-  #span2 {
-    border-color: $neon-blue-green;
-  }
-  #span3 {
-    border-color: $neon-green;
+    border-color:$dark-gray
   }
 }
 
@@ -106,19 +98,19 @@ export default {
 
 #menu-toggle:hover {
   #span1 {
-    -webkit-box-shadow: 2px 2px 3px 0px $neon-blue;
-    -moz-box-shadow: 2px 2px 3px 0px $neon-blue;
-    box-shadow: 2px 2px 3px 0px $neon-blue;
+    -webkit-box-shadow: 0px 0px 3px 0px $neon-blue;
+    -moz-box-shadow: 0px 0px 3px 0px $neon-blue;
+    box-shadow: 0px 0px 3px 0px $neon-blue;
   }
   #span2 {
-    -webkit-box-shadow: 2px 2px 3px 0px $neon-blue-green;
-    -moz-box-shadow: 2px 2px 3px 0px $neon-blue-green;
-    box-shadow: 2px 2px 3px 0px $neon-blue-green;
+    -webkit-box-shadow: 0px 0px 3px 0px $neon-blue-green;
+    -moz-box-shadow: 0px 0px 3px 0px $neon-blue-green;
+    box-shadow: 0px 0px 3px 0px $neon-blue-green;
   }
   #span3 {
-    -webkit-box-shadow: 2px 2px 3px 0px $neon-green;
-    -moz-box-shadow: 2px 2px 3px 0px $neon-green;
-    box-shadow: 2px 2px 3px 0px $neon-green;
+    -webkit-box-shadow: 0px 0px 3px 0px $neon-green;
+    -moz-box-shadow: 0px 0px 3px 0px $neon-green;
+    box-shadow: 0px 0px 3px 0px $neon-green;
   }
 }
 

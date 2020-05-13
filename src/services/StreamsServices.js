@@ -24,5 +24,11 @@ export default {
   },
   getPresets() {
     return apiClient.get("/presets");
+  },
+  postToken(data){
+    return apiClient.post("/authenticate",data);
+  },
+  postLogin(data){
+    return apiClient.post("/login",data);
   }
 };
