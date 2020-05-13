@@ -11,6 +11,9 @@ import VueResource from 'vue-resource'
 Vue.use(VueResource);
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import carousel from "vue-carousel"
+
+Vue.use(carousel);
 
 //Vue.use(videojs); // If not work, then import it in the MediaPlayer Component // maybe the "import "videojs-contrib-dash/dist/videojs-dash";" will be missed
 Vue.config.productionTip = false;
