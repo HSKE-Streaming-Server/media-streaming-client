@@ -23,6 +23,7 @@
               params: { stream_id: media.id, source: media.source }
             }"
           >
+
             <div class="card card-body">
               <img class="img-fluid" :src="media.image" />
               <p class="m-0 text-center">{{ media.name }}</p>

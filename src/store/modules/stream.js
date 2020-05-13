@@ -4,15 +4,15 @@ export const namespaced = true;
 
 export const state = {
   stream: [],
-  mediaName: ""
+  mediaStream: ""
 };
 
 export const mutations = {
   SET_STREAM(state, stream) {
     state.stream = stream;
   },
-  SET_MEDIA_NAME(state, mediaName) {
-    state.mediaName = mediaName;
+  SET_MEDIA(state, media) {
+    state.mediaStream = media;
   }
 };
 
@@ -22,7 +22,7 @@ export const actions = {
       commit("SET_STREAM", response.data);
     });
     StreamsServices.getMediaName(id).then(response => {
-      commit("SET_MEDIA_NAME", response.data.name);
+      commit("SET_MEDIA", response.data);
     });
   }
 };

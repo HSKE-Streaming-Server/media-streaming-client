@@ -68,47 +68,28 @@
     {
       "id": 1,
       "stream_link": "https://irtdashreference-i.akamaihd.net/dash/live/901161/bfs/manifestBR.mpd",
-      "settings": {
-        "x": 500,
-        "y": 1000
-      },
-      "bitrate": 60
+      "stream_type": "application/dash+xml"
     },
     {
       "id": 2,
-      "stream_link": "https://dash.akamaized.net/dash264/TestCases/2c/qualcomm/1/MultiResMPEG2.mpd",
-      "settings": {
-        "x": 500,
-        "y": 1000
-      },
-      "bitrate": 60
+      "stream_link": "https://dash.akamaized.net/envivio/EnvivioDash3/manifest.mpd",
+      "stream_type": "application/dash+xml"
     },
     {
       "id": 3,
-      "stream_link": "https://dash.akamaized.net/dash264/TestCasesUHD/2b/11/MultiRate.mpd",
-      "settings": {
-        "x": 500,
-        "y": 1000
-      },
-      "bitrate": 60
+      "stream_link": "https://dash.akamaized.net/envivio/EnvivioDash3/manifest.mpd",
+      "stream_type": "application/dash+xml"
     },
     {
       "id": 4,
       "stream_link": "https://dash.akamaized.net/dash264/TestCasesUHD/2a/11/MultiRate.mpd",
-      "settings": {
-        "x": 500,
-        "y": 1000
-      },
-      "bitrate": 60
+      "stream_type": "application/dash+xml"
+
     },
     {
       "id": 5,
       "stream_link": "https://dash.akamaized.net/dash264/TestCasesIOP33/multiplePeriods/2/manifest_multiple_Periods_Add_Remove_AdaptationSet.mpd",
-      "settings": {
-        "x": 500,
-        "y": 1000
-      },
-      "bitrate": 60
+      "stream_type": "application/dash+xml"
     }
   ],
   "presets": {
