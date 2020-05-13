@@ -19,13 +19,13 @@ const routes = [
         name: 'home'
       },
       {
-        path: 'sources/:type',
+        path: ':type/categories',
         component: () => import("../views/Sources.vue"),
         name: "source",
         props: true
       },
       {
-        path: 'contents/:source',
+        path: 'mediathek/:source',
         component: () => import("../views/Contents.vue"),
         name: "contents",
         props: true

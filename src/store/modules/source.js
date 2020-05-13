@@ -13,8 +13,9 @@ export const mutations = {
 };
 
 export const actions = {
-  fetchAllSources({ commit }, type) {
-    StreamsServices.getSource(type).then(response => {
+  fetchAllSources({ commit, rootState }) {
+    let token = rootState.authentication.userData.token;
+    StreamsServices.getSource(token).then(response => {
       commit("SET_ALL_SOURCES", response.data);
     });
   }

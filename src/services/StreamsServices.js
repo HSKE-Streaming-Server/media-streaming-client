@@ -10,11 +10,11 @@ const apiClient = axios.create({
 });
 
 export default {
-  getSource(type) {
-    return apiClient.get("/source?type=" + type);
+  getSource(token) {
+    return apiClient.get("/categories", token);
   },
-  getMedia(source) {
-    return apiClient.get("/media?source=" + source);
+  getMedia(data) {
+    return apiClient.get("/media?source=" + data.source);
   },
   getStream(id) {
     return apiClient.get("/stream/" + id);

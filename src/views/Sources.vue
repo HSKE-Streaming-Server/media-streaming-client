@@ -1,7 +1,7 @@
 <template>
   <div class="Sources">
     <div class="container">
-      <h1>{{ type }} Sources</h1>
+      <h1>{{ type }} Categories</h1>
       <div class="row">
         <div class="col-md-4" v-for="source in sources" :key="source.id">
           <Tile :source="source"></Tile>

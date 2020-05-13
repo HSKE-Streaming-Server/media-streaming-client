@@ -1,6 +1,6 @@
 <template>
   <div class="Tile card p-3 my-3 shadow">
-    <router-link :to="{ name: 'contents', params: { source: source.name } }">
+    <router-link :to="{ name: 'contents', params: { source: source } }">
       <table class="w-100">
         <tr>
           <td class="text-center">
@@ -43,7 +43,7 @@
         </tr>
       </table>
 
-      <p class="text-center mb-0">{{ source.description }}</p>
+      <p class="text-center mb-0">{{ source }}</p>
     </router-link>
   </div>
 </template>
