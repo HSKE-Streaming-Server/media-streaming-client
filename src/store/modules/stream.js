@@ -17,12 +17,12 @@ export const mutations = {
 };
 
 export const actions = {
-  fetchStream({ commit }, id) {
-    StreamsServices.getStream(id).then(response => {
+  fetchStream({ commit }, stream_id, settings) {
+    StreamsServices.getStream(stream_id, settings).then(response => {
       commit("SET_STREAM", response.data);
     });
-    StreamsServices.getMediaName(id).then(response => {
-      commit("SET_MEDIA", response.data);
+    StreamsServices.getMedia(stream_id).then(response => {
+      commit("SET_MEDIA", response.data); //UM aktuellen Media zu holen
     });
   }
 };

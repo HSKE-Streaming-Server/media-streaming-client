@@ -10,25 +10,25 @@ const apiClient = axios.create({
 });
 
 export default {
-  getSource(token) {
-    return apiClient.get("/categories", token);
+  getSource() {
+    return apiClient.post("/categories");
   },
-  getMedia(data) {
-    return apiClient.get("/media?source=" + data.source);
+  getMedia(category) {
+    return apiClient.post("/media", { category: category });
   },
-  getStream(id) {
-    return apiClient.get("/stream/" + id);
-  },
-  getMediaName(id) {
-    return apiClient.get("/media/" + id);
+  getStream(stream_id, settings) {
+    return apiClient.post("/stream", {
+      stream_id: stream_id,
+      settings: settings
+    });
   },
   getPresets() {
-    return apiClient.get("/presets");
+    return apiClient.post("/presets");
   },
-  postToken(data){
-    return apiClient.post("/authenticate",data);
+  postToken(data) {
+    return apiClient.post("/authenticate", data);
   },
-  postLogin(data){
-    return apiClient.post("/login",data);
+  postLogin(data) {
+    return apiClient.post("/login", data);
   }
 };

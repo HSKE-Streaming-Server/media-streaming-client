@@ -1,5 +1,5 @@
 <template>
-  <video-player  style="background-image: url('../assets/monitor.jpeg')" :options="videoOptions" />
+  <video-player   :options="videoOptions" />
 </template>
 
 <script>
@@ -11,9 +11,8 @@ export default {
   components: {
     VideoPlayer
   },
-  props: [''],
   computed: {
-    ...mapState("stream", ["stream", "mediaName"]),
+    ...mapState("stream", ["stream"]),
     videoOptions() {
       return {
         autoplay: false,
@@ -24,7 +23,7 @@ export default {
             type: "application/dash+xml"
           }
         ],
-        poster:"http://placehold.it/380?text=DMAX Video 2"
+        poster:"http://placehold.it/380?text=POSTER"
       };
     }
   },
