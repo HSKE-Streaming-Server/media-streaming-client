@@ -6,7 +6,7 @@
     "start": "npm-run-all -p serve serve-data",
     "serve": "vue-cli-service serve",
     "serve-data": "json-server --watch json-api-server.json",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --mode prod",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
