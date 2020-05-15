@@ -21,7 +21,8 @@ export default {
   props: ["stream_id"],
 
   created() {
-    this.fetchStream(this.stream_id, this.settings);
+    this.fetchAllSettings();
+    this.fetchStream({stream_id:this.stream_id, settings:this.settings});
   },
   computed: {
     ...mapState("stream", ["stream", "mediaStream"]),
