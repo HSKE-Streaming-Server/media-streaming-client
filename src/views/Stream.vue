@@ -4,7 +4,6 @@
         <div class="col-6 mt-5 card" >
           <img class="card-img-top mt-2" src="http://placehold.it/380?text=POSTER" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">{{ mediaStream['name'] }}</h5>
             <p class="card-text">Here some description will be written </p>
             <router-link  class="btn btn-primary" :to="{ name: 'play-now', params:{stream_id: stream_id, settings: settings} }"> Play Now</router-link>
           </div>
