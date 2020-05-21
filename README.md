@@ -1,5 +1,13 @@
 # media-streaming-client
 
+## local testing
+
+for local testing, it might be neccessary to add tis line to the `.htaccess` inside the apache's webroot.
+
+```
+Header set Access-Control-Allow-Origin "*"
+```
+
 ## Project setup
 ```
 npm install
