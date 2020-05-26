@@ -20,7 +20,7 @@
           <router-link
             :to="{
               name: 'stream',
-              params: { stream_id: media.id, source: source }
+              params: { stream: media, source: source }
             }"
           >
 

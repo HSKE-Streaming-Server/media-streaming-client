@@ -5,7 +5,7 @@
           <img class="card-img-top mt-2" src="http://placehold.it/380?text=POSTER" alt="Card image cap">
           <div class="card-body">
             <p class="card-text">Here some description will be written </p>
-            <router-link  class="btn btn-primary" :to="{ name: 'play-now', params:{stream_id: stream_id, settings: settings} }"> Play Now</router-link>
+            <router-link  class="btn btn-primary" :to="{ name: 'play-now', params:{stream_id: stream.id, settings: settings} }" v-on:click.native="addToHistory(stream)"> Play Now</router-link>
           </div>
         </div>
       </div>
@@ -17,13 +17,17 @@ import { mapState, mapActions } from "vuex";
 
 export default {
   name: "Stream",
-  props: ["stream_id"],
+  props: ["stream"],
   computed: {
     ...mapState("settings", ["settings"])
   },
   methods: {
     ...mapActions("history", ["addToHistory"]),
     ...mapActions("settings", ["fetchAllSettings"])
+  },
+  created() {
+    this.fetchAllSettings();
+    console.log(this.settings);
   }
 };
 </script>

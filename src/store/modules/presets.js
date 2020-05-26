@@ -7,8 +7,15 @@ export const state = {
 };
 
 export const mutations = {
-  SET_ALL_PRESETS(state, presets) {
-    state.presets = presets;
+  SET_ALL_PRESETS(state, presets) { 
+    let temp = {};
+   Object.keys(presets).forEach((key)=>{
+     temp[key]={};
+     presets[key].forEach((preset)=>{
+       temp[key][preset.presetID]=preset;
+     })
+   })
+    state.presets = temp;
   }
 };
 

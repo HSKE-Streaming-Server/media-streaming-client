@@ -94,6 +94,9 @@ export default {
     setSetting: function(key, value) {
       this.settings[key] = value;
       this.saveAllSettings(this.settings);
+    },
+    getPreset(key,index){
+      return this.presets[key].filter((preset)=>{return preset.id==index});
     }
   },
   created() {
