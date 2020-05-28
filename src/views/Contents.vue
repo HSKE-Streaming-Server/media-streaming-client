@@ -1,9 +1,7 @@
 <template>
   <div class="Contents py-4">
     <h1 class="text-center">{{ source }} Mediathek</h1>
-    <Carusel class="my-3" :content="media" :id="0"></Carusel>
-   <!-- <Carusel class="my-3" :content="media" :id="1"></Carusel>
-    <Carusel class="my-3" :content="media" :id="2"></Carusel>-->
+    <Carusel class="my-3" :content="media" :source="source"></Carusel>
   </div>
 </template>
 <script>

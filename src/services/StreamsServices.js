@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:3000",
   withCredentials: false,
   headers: {
     Accept: "application/json",
@@ -10,25 +9,25 @@ const apiClient = axios.create({
 });
 
 export default {
-  getSource(type) {
-    return apiClient.get("/source?type=" + type);
+  getSource() {
+    return apiClient.post("/api/categories");
   },
-  getMedia(source) {
-    return apiClient.get("/media?source=" + source);
+  getMedia(category) {
+    return apiClient.post("/api/media", { category: category });
   },
-  getStream(id) {
-    return apiClient.get("/stream/" + id);
-  },
-  getMediaName(id) {
-    return apiClient.get("/media/" + id);
+  getStream(stream_id, settings) {
+    return apiClient.post("/api/stream", {
+      stream_id: stream_id,
+      settings: settings
+    });
   },
   getPresets() {
-    return apiClient.get("/presets");
+    return apiClient.post("/api/presets");
   },
-  postToken(data){
-    return apiClient.post("/authenticate",data);
+  postToken(data) {
+    return apiClient.post("/api/authenticate", data);
   },
-  postLogin(data){
-    return apiClient.post("/login",data);
+  postLogin(data) {
+    return apiClient.post("/api/login", data);
   }
 };

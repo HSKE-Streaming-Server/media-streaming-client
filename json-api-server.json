@@ -1,27 +1,5 @@
 {
-  "source": [
-    {
-      "id": 1,
-      "name": "DMAX",
-      "image": "https://sonic-eu1-prod-images.disco-api.com/2017/12/14/55316bd1-5f1e-43df-a886-80ebbb7b6699.png",
-      "type": "video",
-      "description": "DMAX Videos"
-    },
-    {
-      "id": 2,
-      "name": "ZDF",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/ZDF_logo.svg/1280px-ZDF_logo.svg.png",
-      "type": "video",
-      "description": "ZDF Videos"
-    },
-    {
-      "id": 3,
-      "name": "spotify",
-      "image": "",
-      "type": "music",
-      "description": ""
-    }
-  ],
+  "categories": [ "DMAX", "ZDF", "TV", "RADIO" ],
   "media": [
     {
       "id": 1,

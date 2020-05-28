@@ -2,11 +2,10 @@
   <div class="container">
     <div class="row align-items-center">
         <div class="col-6 mt-5 card" >
-          <img class="card-img-top mt-2" :src="mediaStream['image']" alt="Card image cap">
+          <img class="card-img-top mt-2" src="http://placehold.it/380?text=POSTER" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <router-link  class="btn btn-primary" :to="{ name: 'play-now' }"> Play Now</router-link>
+            <p class="card-text">Here some description will be written </p>
+            <router-link  class="btn btn-primary" :to="{ name: 'play-now', params:{stream_id: stream.id, settings: settings} }" v-on:click.native="addToHistory(stream)"> Play Now</router-link>
           </div>
         </div>
       </div>
@@ -18,18 +17,17 @@ import { mapState, mapActions } from "vuex";
 
 export default {
   name: "Stream",
-  props: ["stream_id"],
-
-  created() {
-    this.fetchStream(this.stream_id);
-  },
+  props: ["stream"],
   computed: {
-    ...mapState("stream", ["stream", "mediaStream"]),
-
+    ...mapState("settings", ["settings"])
   },
   methods: {
-    ...mapActions("stream", ["fetchStream"]),
-    ...mapActions("history", ["addToHistory"])
+    ...mapActions("history", ["addToHistory"]),
+    ...mapActions("settings", ["fetchAllSettings"])
+  },
+  created() {
+    this.fetchAllSettings();
+    console.log(this.settings);
   }
 };
 </script>

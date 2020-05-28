@@ -20,7 +20,7 @@
           <router-link
             :to="{
               name: 'stream',
-              params: { stream_id: media.id, source: media.source }
+              params: { stream: media, source: source }
             }"
           >
 
@@ -37,7 +37,7 @@
 <script>
 export default {
   name: "Carusel",
-  props: ["content", "id"]
+  props: ["content", "source"]
 };
 </script>
 <style scoped lang="scss">
