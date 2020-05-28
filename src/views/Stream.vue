@@ -27,7 +27,6 @@ export default {
   },
   created() {
     this.fetchAllSettings();
-    console.log(this.settings);
   }
 };
 </script>
