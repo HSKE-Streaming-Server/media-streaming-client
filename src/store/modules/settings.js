@@ -8,6 +8,10 @@ export const state = {
 
 export const mutations = {
     SET_ALL_SETTINGS(state, settings) {
+        if(settings == null)settings={
+          videoPresetId: -1,
+          audioPresetId: -1
+        };
         state.settings = settings;
     }
 };

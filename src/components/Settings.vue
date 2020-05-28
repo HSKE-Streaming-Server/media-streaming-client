@@ -1,8 +1,8 @@
 <template>
   <div class="settings">
     <div class="container">
-      <table class="m-4 w-100">
-        <tr v-if="presets.videoPresets">
+      <table class="m-4 w-100" v-if="settings">
+        <tr v-if="presets && presets.videoPresets&& settings && settings.videoPresetId != -1">
           <td>
             <h3>Video</h3>
           </td>
@@ -24,25 +24,25 @@
                   v-on:click="setSetting('videoPresetId',preset.presetID)"
                 >{{preset.displayName}}</a>
               </div>
-            </div> 
+            </div>
           </td>
         </tr>
-        <tr v-if="presets.videoPresets">
+        <tr v-if="presets && presets.videoPresets&& settings && settings.videoPresetId != -1">
           <td>Resolution</td>
           <td>{{presets.videoPresets[settings.videoPresetId].resolutionX}} x {{presets.videoPresets[settings.videoPresetId].resolutionY}}</td>
         </tr>
-        <tr v-if="presets.videoPresets">
+        <tr v-if="presets && presets.videoPresets&& settings && settings.videoPresetId != -1">
           <td>Bitrate</td>
           <td>{{presets.videoPresets[settings.videoPresetId].bitrate}} Bit</td>
         </tr>
 
-        <tr v-if="presets.audioPresets">
+        <tr v-if="presets && presets.audioPresets&& settings  && settings.audioPresetId != -1">
           <td colspan="2">
             <hr />
           </td>
         </tr>
 
-        <tr v-if="presets.audioPresets">
+        <tr v-if="presets && presets.audioPresets&& settings && settings.audioPresetId != -1">
           <td>
             <h3>Audio</h3>
           </td>
@@ -64,10 +64,10 @@
                   v-on:click="setSetting('audioPresetId',preset.presetID)"
                 >{{preset.displayName}}</a>
               </div>
-            </div> 
+            </div>
           </td>
         </tr>
-        <tr v-if="presets.audioPresets">
+        <tr v-if="presets.audioPresets&& settings  && settings.audioPresetId != -1">
           <td>Bitrate</td>
           <td>{{presets.audioPresets[settings.audioPresetId].bitrate}} Bit</td>
         </tr>
@@ -95,19 +95,33 @@ export default {
       this.settings[key] = value;
       this.saveAllSettings(this.settings);
     },
-    getPreset(key,index){
-      return this.presets[key].filter((preset)=>{return preset.id==index});
+    getPreset(key, index) {
+      return this.presets[key].filter(preset => {
+        return preset.id == index;
+      });
     }
   },
   created() {
     this.fetchAllPresets();
     this.fetchAllSettings();
-    if(this.settings == null){
-      //set defaults
-      this.saveAllSettings({
-        videoPresetId:0,
-        audioPresetId:0
-      });
+    if (this.settings.videoPresetId == -1) {
+      if(this.presets.length<0){
+      this.settings.videoPresetId = this.presets.videoPresets[
+        Object.keys(this.presets.videoPresets)[0]
+      ].presetID;}else{
+        this.settings.videoPresetId = 1;
+      }
+      this.saveAllSettings(this.settings);
+
+    }
+    if (this.settings.audioPresetId == -1) {
+      if(this.presets.length<0){
+      this.settings.audioPresetId = this.presets.audioPresets[
+        Object.keys(this.presets.audioPresets)[0]
+      ].presetID;}else{
+        this.settings.audioPresetId = 1;
+      }
+      this.saveAllSettings(this.settings);
     }
   }
 };
