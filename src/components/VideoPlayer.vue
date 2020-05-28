@@ -28,6 +28,7 @@
       };
     },
     mounted() {
+      if(this.player!= null)this.player.reset();
       this.player = videojs(
               this.$refs.videoPlayer,
               this.options,
@@ -38,6 +39,7 @@
     },
     beforeDestroy() {
       if (this.player) {
+        this.player.reset();
         this.player.dispose();
       }
     }

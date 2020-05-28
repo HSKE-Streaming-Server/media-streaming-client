@@ -24,6 +24,9 @@ export default {
   methods: {
     ...mapActions("history", ["addToHistory"]),
     ...mapActions("settings", ["fetchAllSettings"])
+  },
+  created() {
+    this.fetchAllSettings();
   }
 };
 </script>
