@@ -29,5 +29,8 @@ export default {
   },
   postLogin(data) {
     return apiClient.post("/api/login", data);
+  },
+  postKeepAlive(data){
+    return apiClient.post("/api/keepalive", data);
   }
 };
