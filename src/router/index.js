@@ -37,7 +37,8 @@ const routes = [
         name: "contents",
         props: true,
         beforeEnter(routeTo, routeFrom, next) {
-          store.dispatch("source/fetchAllSources").then(() => {
+          console.log(routeTo);
+          store.dispatch("media/fetchAllMedia", routeTo.params.source).then(() => {
             next()
           })
         }
@@ -46,7 +47,13 @@ const routes = [
         path: ":source/video/:stream_id",
         component: () => import("../views/Stream.vue"),
         name: "stream",
-        props: true
+        props: true,
+        beforeEnter(routeTo, routeFrom, next) {
+          console.log(routeTo);
+          store.dispatch("stream/fetchStream", routeTo.params.source).then(() => {
+            next()
+          })
+        }
       },
       {
         path: ":source/video/:stream_id/play",
