@@ -20,12 +20,10 @@ export default {
   components: {
     Tile
   },
-  data() {
-    return {};
-  },
   computed: {
     ...mapState("source", ["sources"])
   }
-
 };
 </script>
+
+<style></style>

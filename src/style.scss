@@ -44,3 +44,15 @@ $neon-green:rgb(136, 255, 24);
 ::-webkit-scrollbar-thumb:hover {
   background: $neon-green; 
 }
+
+#nprogress {
+  height:6px;
+}
+
+#nprogress .bar {
+  background: rgb(136, 255, 24);
+}
+
+#nprogress .spinner-icon {
+  display: none;
+}

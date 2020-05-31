@@ -1,12 +1,18 @@
 <template>
   <div>
     <div v-if="loading">
-      <loader-dots
-        :color="'rgb(97, 97, 97)'"
-        background="white"
-        :duration="0.5"
-        :size="35"
-      />
+      <div class="text-center">
+        <div
+          class="spinner-border m-5 spinner-border-lg"
+          style="width: 3rem; height: 3rem;  border-top-color: rgb(136, 255, 24);
+                                                                  border-left-color: rgb(136, 255, 24);
+                                                                  border-right-color: rgb(136, 255, 24);
+                                                                  border-bottom-color: rgb(97, 97, 97); "
+          role="status"
+        >
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
     </div>
     <div v-else>
       <video-player :options="videoOptions" />
@@ -17,15 +23,12 @@
 <script>
 import VideoPlayer from "@/components/VideoPlayer.vue";
 import StreamsServices from "../services/StreamsServices";
-import loaderDots from "@nulldreams/vue-loading/src/components/dots";
-
-//import { mapState, mapActions } from "vuex";
+import NProgress from "nprogress";
 
 export default {
   name: "VueVideoPlayer",
   components: {
-    VideoPlayer,
-    loaderDots
+    VideoPlayer
   },
   data() {
     return {
@@ -36,11 +39,15 @@ export default {
   },
   created() {
     this.loading = true;
+    NProgress.start();
     StreamsServices.getStream(this.stream_id, this.settings)
       .then(response => {
         this.stream_link = response.data.stream_link;
       })
-      .finally(() => (this.loading = false));
+      .finally(() => {
+        NProgress.done();
+        this.loading = false;
+      });
   },
   props: ["stream_id", "settings"],
   computed: {
@@ -61,4 +68,3 @@ export default {
 };
 </script>
 
-<style scoped></style>
