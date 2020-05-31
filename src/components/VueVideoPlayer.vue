@@ -24,6 +24,9 @@
 import VideoPlayer from "@/components/VideoPlayer.vue";
 import StreamsServices from "../services/StreamsServices";
 import NProgress from "nprogress";
+import CookieService from "../services/CookieSerice";
+
+//import { mapState, mapActions } from "vuex";
 
 export default {
   name: "VueVideoPlayer",
@@ -47,6 +50,8 @@ export default {
       .finally(() => {
         NProgress.done();
         this.loading = false;
+        this.keepAlive();
+        this.interval = setInterval(this.keepAlive, 20000);
       });
   },
   props: ["stream_id", "settings"],
@@ -63,6 +68,18 @@ export default {
         ],
         poster: "http://placehold.it/380?text=DMAX Video 2"
       };
+    }
+  },
+  methods: {
+    keepAlive() {
+      CookieService.getToken().then(token => {
+        StreamsServices.postKeepAlive({
+          token: token,
+          audiopreset: this.settings.videoPresetId,
+          videopreset: this.settings.audioPresetId,
+          transcodedVideoUri: this.stream_link
+        }).then(() => {});
+      });
     }
   }
 };
