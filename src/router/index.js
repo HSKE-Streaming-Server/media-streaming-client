@@ -1,5 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import NProgress from "nprogress";
+import store from "../store"
 
 Vue.use(VueRouter);
 
@@ -22,13 +24,23 @@ const routes = [
         path: ":type/categories",
         component: () => import("../views/Sources.vue"),
         name: "source",
-        props: true
+        props: true,
+        beforeEnter(routeTo, routeFrom, next) {
+          store.dispatch("source/fetchAllSources").then(() => {
+            next()
+          })
+        }
       },
       {
         path: "mediathek/:source",
         component: () => import("../views/Contents.vue"),
         name: "contents",
-        props: true
+        props: true,
+        beforeEnter(routeTo, routeFrom, next) {
+          store.dispatch("source/fetchAllSources").then(() => {
+            next()
+          })
+        }
       },
       {
         path: ":source/video/:stream_id",
@@ -77,5 +89,14 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 });
+
+router.beforeEach((routeTo, routeFrom, next) => {
+  NProgress.start()
+  next()
+});
+
+router.afterEach(() => {
+  NProgress.done()
+})
 
 export default router;

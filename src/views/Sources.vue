@@ -11,7 +11,7 @@
   </div>
 </template>
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState } from "vuex";
 import Tile from "@/components/Tile.vue";
 
 export default {
@@ -25,12 +25,7 @@ export default {
   },
   computed: {
     ...mapState("source", ["sources"])
-  },
-  methods: {
-    ...mapActions("source", ["fetchAllSources"])
-  },
-  created() {
-    this.fetchAllSources(this.type);
   }
+
 };
 </script>
