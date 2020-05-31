@@ -20,10 +20,9 @@
           <router-link
             :to="{
               name: 'stream',
-              params: { stream: media, source: source }
+              params: { stream_id: media.id, source: source }
             }"
           >
-
             <div class="card card-body">
               <img class="img-fluid" :src="media.image" />
               <p class="m-0 text-center">{{ media.name }}</p>
@@ -55,7 +54,7 @@ a:hover {
   text-decoration: none !important;
 }
 
-.carousel-item:hover{
+.carousel-item:hover {
   cursor: pointer;
 }
 

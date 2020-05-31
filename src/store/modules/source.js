@@ -14,7 +14,7 @@ export const mutations = {
 
 export const actions = {
   fetchAllSources({ commit }) {
-    StreamsServices.getSource().then(response => {
+    return StreamsServices.getSource().then(response => {
       commit("SET_ALL_SOURCES", response.data);
     });
   }

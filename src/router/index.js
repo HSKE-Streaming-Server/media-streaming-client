@@ -1,5 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import NProgress from "nprogress";
+import store from "../store"
 
 Vue.use(VueRouter);
 
@@ -14,30 +16,40 @@ const routes = [
         redirect: "/home"
       },
       {
-        path: '/home',
+        path: "/home",
         component: () => import("../views/Home.vue"),
-        name: 'home'
+        name: "home"
       },
       {
-        path: ':type/categories',
+        path: ":type/categories",
         component: () => import("../views/Sources.vue"),
         name: "source",
-        props: true
+        props: true,
+        beforeEnter(routeTo, routeFrom, next) {
+          store.dispatch("source/fetchAllSources").then(() => {
+            next()
+          })
+        }
       },
       {
-        path: 'mediathek/:source',
+        path: "mediathek/:source",
         component: () => import("../views/Contents.vue"),
         name: "contents",
-        props: true
+        props: true,
+        beforeEnter(routeTo, routeFrom, next) {
+          store.dispatch("media/fetchAllMedia", routeTo.params.source).then(() => {
+            next()
+          })
+        }
       },
       {
-        path: ':source/video/:stream_id',
+        path: ":source/video/:stream_id",
         component: () => import("../views/Stream.vue"),
         name: "stream",
-        props: true
+        props: true,
       },
       {
-        path: ':source/video/:stream_id/play',
+        path: ":source/video/:stream_id/play",
         component: () => import("../components/VueVideoPlayer.vue"),
         name: "play-now",
         props: true
@@ -50,9 +62,9 @@ const routes = [
     component: () => import("../views/Navigation.vue"),
     children: [
       {
-        path: '/',
+        path: "/",
         component: () => import("../components/Settings.vue"),
-        name: 'settings'
+        name: "settings"
       }
     ]
   },
@@ -60,14 +72,31 @@ const routes = [
     path: "/login",
     name: "Login",
     component: () => import("../components/Login.vue")
+  },
+  {
+    path: "/404",
+    name: "404",
+    component: () => import("../components/NotFound.vue")
+  },
+  {
+    path: "*",
+    redirect: { name: "404" }
   }
 ];
-
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes
 });
+
+router.beforeEach((routeTo, routeFrom, next) => {
+  NProgress.start()
+  next()
+});
+
+router.afterEach(() => {
+  NProgress.done()
+})
 
 export default router;

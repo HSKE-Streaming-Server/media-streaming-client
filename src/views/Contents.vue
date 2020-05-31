@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState } from "vuex";
 import Carusel from "@/components/Carusel.vue";
 
 export default {
@@ -24,12 +24,6 @@ export default {
   },
   computed: {
     ...mapState("media", ["media"])
-  },
-  methods: {
-    ...mapActions("media", ["fetchAllMedia"])
-  },
-  created() {
-    this.fetchAllMedia(this.source);
   }
 };
 </script>

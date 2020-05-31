@@ -13,8 +13,8 @@ export const mutations = {
 };
 
 export const actions = {
-  fetchAllMedia({ commit }, source) {
-    StreamsServices.getMedia(source).then(response => {
+   fetchAllMedia({ commit }, source) {
+    return StreamsServices.getMedia(source).then(response => {
       commit("SET_ALL_Media", response.data);
     });
   }
