@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "npm-run-all -p serve serve-data",
+    "start": "npm-run-all -p serve",
+    "start-all": "npm-run-all -p serve serve-data",
     "serve": "vue-cli-service serve",
     "serve-data": "json-server --watch json-api-server.json",
     "build": "vue-cli-service build --mode prod",
