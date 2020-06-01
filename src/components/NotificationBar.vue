@@ -1,0 +1,38 @@
+<template>
+    <div class="notification-bar">
+        <p>{{ notification.message }}</p>
+    </div>
+</template>
+
+<script>
+    import { mapAction } from 'vuex'
+    export default {
+        name: "NotificationBar",
+        data() {
+            return {
+                timeout: null
+            }
+        },
+        props: {
+            notification: {
+                type: Object,
+                required: true
+            }
+        },
+        mounted() {
+            this.timeout = setTimeout(() => this.remove(this.notification), 5000)
+        },
+        beforeDestroy() {
+            clearTimeout(this.timeout)
+        },
+        methods: mapAction('notification', ['removeNotification'])
+
+
+    }
+</script>
+
+<style scoped>
+.notification-bar{
+    margin: 1em 0 1em;
+}
+</style>

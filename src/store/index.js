@@ -10,6 +10,7 @@ import * as settings from "@/store/modules/settings.js";
 import * as presets from "@/store/modules/presets.js";
 import * as authentication from "@/store/modules/authentication";
 import * as history from "@/store/modules/history";
+import * as notification from "@/store/modules/notification";
 
 Vue.use(Vuex);
 
@@ -21,7 +22,8 @@ export default new Vuex.Store({
     settings,
     presets,
     authentication,
-    history
+    history,
+    notification
   },
   
   plugins: [createPersistedState()]
