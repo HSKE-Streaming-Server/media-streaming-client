@@ -22,7 +22,6 @@ export const mutations = {
 export const actions = {
     login({ commit }, userData) {
         return StreamsServices.postLogin(userData).then(response => {
-            response.data = {success:true,token:"testtoken"};//TODO
             commit("SET_ALL_UserData",{
                 success:response.data.success,
                 name:userData.username,
@@ -35,7 +34,6 @@ export const actions = {
     },
     authenticate({commit},token){
         return StreamsServices.postToken(token).then(response => {
-            response.data = {success:true,username:"testuser"}   //TODO
             if(response.data.success){
                 commit("SET_ALL_UserData",{token:token,success:true,name:response.username}) 
             }else{
