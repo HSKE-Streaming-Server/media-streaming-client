@@ -58,8 +58,10 @@ export default {
   computed: {
     videoOptions() {
       return {
-        autoplay: false,
+        autoplay: true,
         controls: true,
+        liveui: true,
+        //SeekToLive: true
         sources: [
           {
             src: this.stream_link,
