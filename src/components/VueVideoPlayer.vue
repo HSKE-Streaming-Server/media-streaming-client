@@ -46,7 +46,8 @@ export default {
   created() {
     this.loading = true;
     NProgress.start();
-    StreamsServices.getStream(this.stream_id, this.settings)
+    let token = CookieService.getToken();
+    StreamsServices.getStream(this.stream_id, this.settings,token)
       .then(response => {
         this.stream_link = response.data.stream_link;
       })
