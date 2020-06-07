@@ -36,6 +36,7 @@
 </template>
 <script>
 import { mapState, mapActions } from "vuex";
+import "hash.js";
 
 export default {
   name: "Login",
@@ -52,7 +53,11 @@ export default {
     ...mapActions("authentication", ["login"]),
     performLogin: function() {
       if (!this.username || !this.password) return;
-      this.login({ username: "testuser", password: "password" }).then(
+      var  hash = require('hash.js');
+      this.login({ 
+        username: this.username, 
+        password: hash.sha256().update(this.password).digest('hex') 
+        }).then(
         success => {
           if (success) {
             this.$router.push("home");
@@ -69,7 +74,7 @@ export default {
       }
     }
   },
-  created() {}
+  created(){}
 };
 </script>
 <style scoped lang="scss">
