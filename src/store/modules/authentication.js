@@ -25,10 +25,10 @@ export const actions = {
             commit("SET_ALL_UserData", {
                 success: response.data.success,
                 name: userData.username,
-                token: response.data.token
+                token: response.data.userdata.token
             });
             if (response.data.success)
-                CookieService.setToken(response.data.token)
+                CookieService.setToken(response.data.userdata.token)
             return response.data.success;
         });
     },
@@ -37,7 +37,7 @@ export const actions = {
         if (!token) return false;
         return StreamsServices.postToken(token).then(response => {
             if (response.data.success) {
-                commit("SET_ALL_UserData", { token: token, success: true, name: response.username })
+                commit("SET_ALL_UserData", { token: token, success: true, name: response.data.userdata.username })
             } else {
                 commit("SET_ALL_UserData", { token: null, loggedIn: false, name: null })
                 CookieService.removeToken();
