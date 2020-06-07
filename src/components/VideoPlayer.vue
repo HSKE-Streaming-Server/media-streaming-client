@@ -33,10 +33,12 @@ export default {
   },
   created() {
     this.$swal({
-      title: 'Das Video ist fast bereit!',
-      text: 'Es könnte einige Sekunden dauern! Bitte haben Sie Geduld',
+      title: "The Video is almost ready!",
+      text:
+        "Please wait while the video is buffering. This can take a minute or two!",
       showCancelButton: false,
-      showConfirmButton: false
+      showConfirmButton: false,
+      allowOutsideClick: false
     });
   },
   mounted() {
@@ -45,7 +47,7 @@ export default {
       this.$refs.videoPlayer,
       this.options,
       function onPlayerReady() {
-        console.log("onPlayerReady", this);
+
       }
     );
   },
