@@ -1,18 +1,21 @@
 <template>
-  <div>
-    <div v-if="loading">
-      <div class="text-center">
+  <div class="h-100">
+    <div v-if="loading" class="h-100">
+     <table class="w-100 h-100">
+       <tr>
+         <td class="text-center align-middle">
         <div
           class="spinner-border m-5 spinner-border-lg"
           style="width: 3rem; height: 3rem;  border-top-color: rgb(136, 255, 24);
                                                                   border-left-color: rgb(136, 255, 24);
                                                                   border-right-color: rgb(136, 255, 24);
                                                                   border-bottom-color: rgb(97, 97, 97); "
-          role="status"
-        >
+          role="status" >
           <span class="sr-only">Loading...</span>
         </div>
-      </div>
+         </td>
+       </tr>
+     </table>
     </div>
     <div v-else>
       <video-player :options="videoOptions" />
