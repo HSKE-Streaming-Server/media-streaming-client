@@ -92,14 +92,16 @@ const router = new VueRouter({
 
 router.beforeEach((routeTo, routeFrom, next) => {
   NProgress.start()
-  store.dispatch("authentication/authenticate").then((loggedIn) => {
-    const publicPages = ['/login'];
-    const authRequired = !publicPages.includes(routeTo.path);
-    if (authRequired && !loggedIn) {
-      return next('/login');
-    }
-    next()
-  })
+  const publicPages = ['/login'];
+  if (!publicPages.includes(routeTo.path)) {
+    store.dispatch("authentication/authenticate").then((loggedIn) => {
+      if (!loggedIn) {
+        next('/login');
+      }
+      next();
+    })
+  }
+  next();
 });
 
 router.afterEach(() => {

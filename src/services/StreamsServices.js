@@ -24,13 +24,16 @@ export default {
   getPresets() {
     return apiClient.post("/api/presets");
   },
-  postToken(data) {
-    return apiClient.post("/api/authenticate", data);
+  postToken(token) {
+    return apiClient.post("/api/authenticate", { token: token });
   },
   postLogin(data) {
     return apiClient.post("/api/login", data);
   },
-  postKeepAlive(data){
+  postLogout(token) {
+    return apiClient.post("/api/logout", { token: token });
+  },
+  postKeepAlive(data) {
     return apiClient.post("/api/keepalive", data);
   }
 };

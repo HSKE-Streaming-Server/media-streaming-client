@@ -36,7 +36,7 @@
 </template>
 <script>
 import { mapState, mapActions } from "vuex";
-import "password-hash/lib/password-hash";
+import "hash.js";
 
 export default {
   name: "Login",
@@ -53,10 +53,10 @@ export default {
     ...mapActions("authentication", ["login"]),
     performLogin: function() {
       if (!this.username || !this.password) return;
-      var passwordHash = require('password-hash');
+      var  hash = require('hash.js');
       this.login({ 
         username: this.username, 
-        password: passwordHash.generate(this.password) 
+        password: hash.sha256().update(this.password).digest('hex') 
         }).then(
         success => {
           if (success) {
