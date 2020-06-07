@@ -61,8 +61,10 @@ export default {
   computed: {
     videoOptions() {
       return {
-        autoplay: false,
+        autoplay: true,
         controls: true,
+        liveui: true,
+        //SeekToLive: true
         sources: [
           {
             src: this.stream_link,
@@ -75,14 +77,12 @@ export default {
   },
   methods: {
     keepAlive() {
-      CookieService.getToken().then(token => {
         StreamsServices.postKeepAlive({
-          token: token,
+          token: CookieService.getToken(),
           audiopreset: this.settings.videoPresetId,
           videopreset: this.settings.audioPresetId,
           transcodedVideoUri: this.stream_link
         }).then(() => {});
-      });
     }
   }
 };
