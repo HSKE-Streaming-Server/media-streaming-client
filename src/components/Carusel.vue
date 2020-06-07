@@ -11,16 +11,12 @@
       paginationColor="white"
       easing="ease-out"
     >
-      <slide
-        v-for="media in content"
-        v-bind:key="media.id"
-        :data-name="media.name"
-      >
+      <slide v-for="media in content" v-bind:key="media.id" :data-name="media.name">
         <div class="col-12">
           <router-link
             :to="{
               name: 'stream',
-              params: { stream_id: media.id, source: source }
+              params: { stream_id: media.id, source: media.category }
             }"
           >
             <div class="card card-body">

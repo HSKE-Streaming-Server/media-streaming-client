@@ -38,11 +38,12 @@ export const actions = {
         return StreamsServices.postToken(token).then(response => {
             if (response.data.success) {
                 commit("SET_ALL_UserData", { token: token, success: true, name: response.data.userdata.username })
+                return true;
             } else {
                 commit("SET_ALL_UserData", { token: null, loggedIn: false, name: null })
                 CookieService.removeToken();
+                return false;
             }
-            return response.data.success;
         });
     },
     logout({ commit }) {

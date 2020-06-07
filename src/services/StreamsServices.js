@@ -36,5 +36,8 @@ export default {
   },
   postKeepAlive(data) {
     return apiClient.post("/api/keepalive", data);
+  },
+  postDetail(data) {
+    return apiClient.post("/api/detail", data);
   }
 };
