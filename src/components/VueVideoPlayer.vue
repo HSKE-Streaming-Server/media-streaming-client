@@ -74,14 +74,12 @@ export default {
   },
   methods: {
     keepAlive() {
-      CookieService.getToken().then(token => {
         StreamsServices.postKeepAlive({
-          token: token,
+          token: CookieService.getToken(),
           audiopreset: this.settings.videoPresetId,
           videopreset: this.settings.audioPresetId,
           transcodedVideoUri: this.stream_link
         }).then(() => {});
-      });
     }
   }
 };
