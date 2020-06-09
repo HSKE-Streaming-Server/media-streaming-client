@@ -35,7 +35,7 @@ export const actions = {
     authenticate({ commit }) {
         let token = CookieService.getToken();
         if (!token) return false;
-        return StreamsServices.postToken("bullshit").then(response => {
+        return StreamsServices.postToken(token).then(response => {
             if (response.data.success) {
                 commit("SET_ALL_UserData", { token: token, success: true, name: response.data.userdata.username })
                 return true;
