@@ -30,12 +30,12 @@ export const actions = {
             if (response.data.success)
                 CookieService.setToken(response.data.userdata.token)
             return response.data.success;
-        });
+        }).catch(() => {return false});
     },
     authenticate({ commit }) {
         let token = CookieService.getToken();
         if (!token) return false;
-        return StreamsServices.postToken(token).then(response => {
+        return StreamsServices.postToken("bullshit").then(response => {
             if (response.data.success) {
                 commit("SET_ALL_UserData", { token: token, success: true, name: response.data.userdata.username })
                 return true;
@@ -44,7 +44,7 @@ export const actions = {
                 CookieService.removeToken();
                 return false;
             }
-        });
+        }).catch(() => {return false});
     },
     logout({ commit }) {
         let token = CookieService.getToken();
@@ -55,6 +55,6 @@ export const actions = {
                 CookieService.removeToken();
             }
             return response.data.success;
-        });
+        }).catch(() => {return false});
     }
 };
