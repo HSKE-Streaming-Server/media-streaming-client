@@ -12,9 +12,9 @@
             <span id="span2"></span>
             <span id="span3"></span>
           </button>
-
-          <router-view />
           <NotificationContainer></NotificationContainer>
+          <router-view />
+
         </div>
       </div>
     </div>

@@ -20,9 +20,15 @@ export const mutations = {
 };
 
 export const actions = {
-  fetchAllPresets({ commit }) {
+  fetchAllPresets({ commit, dispatch }) {
     StreamsServices.getPresets().then(response => {
       commit("SET_ALL_PRESETS", response.data);
+    }).catch(error => {
+      const notification = {
+        type: "error",
+        message: "There was a problem fetching the presets: " + error.message
+      };
+      dispatch("notification/addNotification", notification, { root: true });
     });
   }
 };

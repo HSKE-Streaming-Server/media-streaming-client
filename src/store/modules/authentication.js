@@ -20,7 +20,7 @@ export const mutations = {
 };
 
 export const actions = {
-    login({ commit }, userData) {
+    login({ commit, dispatch }, userData) {
         return StreamsServices.postLogin(userData).then(response => {
             response.data = {success:true,token:"testtoken"};//TODO
             commit("SET_ALL_UserData",{
@@ -31,9 +31,15 @@ export const actions = {
             if(response.data.success)
                 CookieService.setToken(response.data.token)
             return response.data.success;
+        }).catch(error => {
+            const notification = {
+                type: "error",
+                message: "There was a problem with login: " + error.message
+            };
+            dispatch("notification/addNotification", notification, { root: true });
         });
     },
-    authenticate({commit},token){
+    authenticate({ commit, dispatch },token){
         return StreamsServices.postToken(token).then(response => {
             response.data = {success:true,username:"testuser"}   //TODO
             if(response.data.success){
@@ -43,6 +49,12 @@ export const actions = {
                 CookieService.removeToken();
             }
             return response.data.success;
+        }).catch(error => {
+            const notification = {
+                type: "error",
+                message: "There was a problem with authenticate: " + error.message
+            };
+            dispatch("notification/addNotification", notification, { root: true });
         });
     },
     logout({ commit }){

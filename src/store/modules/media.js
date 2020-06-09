@@ -13,16 +13,17 @@ export const mutations = {
 };
 
 export const actions = {
-   fetchAllMedia({ commit, dispatch }, source) {
-    return StreamsServices.getMedia(source).then(response => {
-      commit("SET_ALL_Media", response.data);
-    })
-        .catch(error => {
-            const notification = {
-                type: 'error',
-                message: 'There was a problem fetching all media: ' + error.message
-            }
-            dispatch('notification/addNotification', notification, { root:true})
-        });
+  fetchAllMedia({ commit, dispatch }, source) {
+    return StreamsServices.getMedia(source)
+      .then(response => {
+        commit("SET_ALL_Media", response.data);
+      })
+      .catch(error => {
+        const notification = {
+          type: "error",
+          message: "There was a problem fetching all media: " + error.message
+        };
+        dispatch("notification/addNotification", notification, { root: true });
+      });
   }
 };
