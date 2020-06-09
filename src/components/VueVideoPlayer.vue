@@ -58,6 +58,11 @@ export default {
         this.interval = setInterval(this.keepAlive, 20000);
       });
   },
+  beforeDestroy(){
+    if(this.interval){
+      clearInterval(this.interval);
+    }
+  },
   props: ["stream_id", "settings"],
   computed: {
     videoOptions() {
