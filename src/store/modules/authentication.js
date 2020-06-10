@@ -30,7 +30,7 @@ export const actions = {
             if (response.data.success)
                 CookieService.setToken(response.data.userdata.token)
             return response.data.success;
-        });
+        }).catch(() => {return false});
     },
     authenticate({ commit }) {
         let token = CookieService.getToken();
@@ -44,7 +44,7 @@ export const actions = {
                 CookieService.removeToken();
                 return false;
             }
-        });
+        }).catch(() => {return false});
     },
     logout({ commit }) {
         let token = CookieService.getToken();
@@ -55,6 +55,6 @@ export const actions = {
                 CookieService.removeToken();
             }
             return response.data.success;
-        });
+        }).catch(() => {return false});
     }
 };

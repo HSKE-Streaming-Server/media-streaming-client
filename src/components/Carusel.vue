@@ -20,7 +20,8 @@
             }"
           >
             <div class="card card-body">
-              <img class="img-fluid" :src="media.image" />
+              <img v-if="media.image == null" class="img-fluid" :src="'http://placehold.it/380?text='+media.name" />
+              <img v-if="media.image != null" class="img-fluid" :src="media.image" />
               <p class="m-0 text-center">{{ media.name }}</p>
             </div>
           </router-link>
