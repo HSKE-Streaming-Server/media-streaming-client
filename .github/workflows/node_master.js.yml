@@ -1,12 +1,10 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Node.js CI
+name: Node.js CI Master
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ master ]
 
 jobs:
@@ -31,5 +29,5 @@ jobs:
     - name: Archive build artifacts
       uses: actions/upload-artifact@v1
       with:
-        name: dist
+        name: dist_master
         path: dist
