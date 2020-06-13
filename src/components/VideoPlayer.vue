@@ -24,22 +24,28 @@ export default {
       default() {
         return {};
       }
+    },
+    detail: {
+
     }
   },
   data() {
     return {
-      player: null
+      player: null,
     };
   },
   created() {
-    this.$swal({
-      title: "The Video is almost ready!",
-      text:
-        "Please wait while the video is buffering. This can take a minute or two!",
-      showCancelButton: false,
-      showConfirmButton: false,
-      allowOutsideClick: false
-    });
+
+    if(this.detail['livestream'] === false) {
+      this.$swal({
+        title: "The Video is almost ready!",
+        text:
+                "Please wait while the video is buffering. This can take a minute or two!",
+        showCancelButton: false,
+        showConfirmButton: false,
+        allowOutsideClick: false
+      });
+    }
   },
   mounted() {
     if (this.player != null) this.player.reset();
@@ -59,7 +65,9 @@ export default {
   },
   methods: {
     play() {
-      this.$swal.close();
+      if(this.detail.livestream === false) {
+        this.$swal.close();
+      }
     }
   }
 };

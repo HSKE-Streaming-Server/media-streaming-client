@@ -12,7 +12,7 @@
       </table>
     </div>
     <div v-else>
-      <video-player :options="videoOptions" />
+      <video-player :options="videoOptions" :detail="detail" />
     </div>
   </div>
 </template>
