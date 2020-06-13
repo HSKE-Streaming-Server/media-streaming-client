@@ -1,6 +1,8 @@
 <template>
   <div class="notification-bar">
-    <p>{{ notification.message }}</p>
+    <div class="alert alert-danger" role="alert">
+      <p>{{ notification.message }}</p>
+    </div>
   </div>
 </template>
 
