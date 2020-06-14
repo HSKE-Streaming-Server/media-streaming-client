@@ -6,7 +6,7 @@
       </div>
 
       <div id="page-content-wrapper">
-        <div class="container-fluid">
+        <div class="container-fluid h-100">
           <button id="menu-toggle" @click="toggleMenu">
             <span id="span1"></span>
             <span id="span2"></span>

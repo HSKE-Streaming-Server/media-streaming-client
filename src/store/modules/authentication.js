@@ -5,9 +5,9 @@ export const namespaced = true;
 
 export const state = {
     userData: {
-        loggedIn:false,
-        name:null,
-        token:null
+        loggedIn: false,
+        name: null,
+        token: null
     }
 };
 
@@ -22,14 +22,13 @@ export const mutations = {
 export const actions = {
     login({ commit, dispatch }, userData) {
         return StreamsServices.postLogin(userData).then(response => {
-            response.data = {success:true,token:"testtoken"};//TODO
-            commit("SET_ALL_UserData",{
-                success:response.data.success,
-                name:userData.username,
-                token:response.data.token
+            commit("SET_ALL_UserData", {
+                success: response.data.success,
+                name: userData.username,
+                token: response.data.userdata.token
             });
-            if(response.data.success)
-                CookieService.setToken(response.data.token)
+            if (response.data.success)
+                CookieService.setToken(response.data.userdata.token)
             return response.data.success;
         }).catch(error => {
             const notification = {
@@ -39,16 +38,19 @@ export const actions = {
             dispatch("notification/addNotification", notification, { root: true });
         });
     },
-    authenticate({ commit, dispatch },token){
+    authenticate({ commit }) {
+        let token = CookieService.getToken();
+        if (!token) return false;
+
         return StreamsServices.postToken(token).then(response => {
-            response.data = {success:true,username:"testuser"}   //TODO
-            if(response.data.success){
-                commit("SET_ALL_UserData",{token:token,success:true,name:response.username}) 
-            }else{
-                commit("SET_ALL_UserData",{token:null,loggedIn:false,name:null})
+            if (response.data.success) {
+                commit("SET_ALL_UserData", { token: token, success: true, name: response.data.userdata.username })
+                return true;
+            } else {
+                commit("SET_ALL_UserData", { token: null, loggedIn: false, name: null })
                 CookieService.removeToken();
+                return false;
             }
-            return response.data.success;
         }).catch(error => {
             const notification = {
                 type: "error",
@@ -56,9 +58,17 @@ export const actions = {
             };
             dispatch("notification/addNotification", notification, { root: true });
         });
+
     },
-    logout({ commit }){
-        commit("SET_ALL_UserData",{token:null,loggedIn:false,name:null})
-        CookieService.removeToken();
+    logout({ commit }) {
+        let token = CookieService.getToken();
+        if (!token) return false;
+        return StreamsServices.postLogout(token).then(response => {
+            if (response.data.success) {
+                commit("SET_ALL_UserData", { token: null, loggedIn: false, name: null })
+                CookieService.removeToken();
+            }
+            return response.data.success;
+        }).catch(() => {return false});
     }
 };
