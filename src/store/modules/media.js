@@ -18,6 +18,13 @@ export const actions = {
     let token = CookieService.getToken();
     return StreamsServices.getMedia(source,token).then(response => {
       commit("SET_ALL_Media", response.data);
-    });
+    }).catch(error => {
+        const notification = {
+          type: "error",
+          message: "There was a problem fetching all media: " + error.message
+        };
+        dispatch("notification/addNotification", notification, { root: true });
+      });
+
   }
 };

@@ -1,15 +1,41 @@
 <template>
-  <div>
-    <h1>Oops!</h1>
-    <h3>This page is not found</h3>
-    <router-link :to="{ name: 'home' }">Go Home</router-link>
+  <div id="notFound">
+    <table class="w-100 h-100">
+      <tr>
+        <td class="text-center align-middle">
+          <h1 class="text-center">Oops!</h1>
+          <h3 class="text-center">This page is not found</h3>
+          <router-link  :to="{ name: 'home' }"> <button class="btn"> Go Home</button> </router-link>
+        </td>
+      </tr>
+    </table>
   </div>
 </template>
 
 <script>
-export default {
-  name: "NotFound"
-};
+  export default {
+    name: "NotFound"
+  };
 </script>
 
-<style scoped></style>
+<style lang="scss">
+  @import "./src/style.scss";
+
+  body {
+    overflow-x: hidden;
+  }
+
+  #notFound {
+    @extend .font;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: $gray;
+    color: $white;
+    height: 100vh;
+  }
+
+  .btn {
+    background-color: $neon-blue-green !important;
+  }
+
+</style>

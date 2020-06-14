@@ -56,7 +56,13 @@ export default {
         this.loading = false;
         this.keepAlive();
         this.interval = setInterval(this.keepAlive, 20000);
-      });
+      }).catch(error => {
+      const notification = {
+        type: "error",
+        message: "There was a problem fetching the Video: " + error.message
+      };
+      this.$store.dispatch("notification/addNotification", notification, { root: true });
+    });
   },
   beforeDestroy(){
     if(this.interval){
