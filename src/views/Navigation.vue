@@ -6,15 +6,14 @@
       </div>
 
       <div id="page-content-wrapper">
-        <div class="container-fluid">
+        <div class="container-fluid h-100">
           <button id="menu-toggle" @click="toggleMenu">
             <span id="span1"></span>
             <span id="span2"></span>
             <span id="span3"></span>
           </button>
-          <NotificationContainer></NotificationContainer>
-          <router-view />
 
+          <router-view />
         </div>
       </div>
     </div>
@@ -23,12 +22,11 @@
 
 <script>
 import Sidebar from "@/components/Sidebar.vue";
-import NotificationContainer from "../components/NotificationContainer";
+
 export default {
   name: "Navigation",
   components: {
-    Sidebar,
-    NotificationContainer
+    Sidebar
   },
   data() {
     return {

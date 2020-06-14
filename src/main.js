@@ -7,15 +7,17 @@ import "dashjs/dist/dash.all.debug";
 import "dashjs/dist/dash.all.min"
 import "videojs-contrib-dash/dist/videojs-dash.min";
 import "nprogress/nprogress.css"
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faSpinner } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 //import videojs from "video.js";
 import VueResource from 'vue-resource'
+import VueSweetalert2 from 'vue-sweetalert2';
+
+// If you don't need the styles, do not connect
+import 'sweetalert2/dist/sweetalert2.min.css';
+
+Vue.use(VueSweetalert2);
 Vue.use(VueResource);
 
-library.add(faSpinner)
-Vue.component('font-awesome-icon', FontAwesomeIcon)
+
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import carousel from "vue-carousel"
