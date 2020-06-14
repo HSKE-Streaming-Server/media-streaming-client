@@ -1,5 +1,4 @@
 import StreamsServices from "../../services/StreamsServices";
-import CookieService from "../../services/CookieSerice";
 
 export const namespaced = true;
 
@@ -19,11 +18,10 @@ export const mutations = {
 
 export const actions = {
   fetchStream({ commit }, data) {
-    let token = CookieService.getToken();
-    StreamsServices.getStream(data.stream_id, data.settings,token).then(response => {
+    StreamsServices.getStream(data.stream_id, data.settings).then(response => {
       commit("SET_STREAM", response.data);
     });
-    StreamsServices.getMedia(data.stream_id,token).then(response => {
+    StreamsServices.getMedia(data.stream_id).then(response => {
       commit("SET_MEDIA", response.data); //UM aktuellen Media zu holen
     });
   }

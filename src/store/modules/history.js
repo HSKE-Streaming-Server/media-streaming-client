@@ -1,22 +1,14 @@
 import CookieService from "../../services/CookieSerice";
-import StreamsServices from "../../services/StreamsServices";
 
 export const namespaced = true;
 
 export const state = {
-  history: []
+  hostory: []
 };
 
 export const mutations = {
   SET_ALL_HISTORY(state, history) {
-    let token = CookieService.getToken();
-    history.forEach((streamId) => {
-      if (state.history.filter((item) => { return item.id == streamId }).length == 0) {
-        StreamsServices.postDetail({ streamId: streamId, token: token }).then(response => {
-          state.history.push(response.data);
-        });
-      }
-    });
+    state.history = history;
   }
 };
 

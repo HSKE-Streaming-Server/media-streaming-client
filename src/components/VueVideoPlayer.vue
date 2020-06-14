@@ -1,18 +1,21 @@
 <template>
-  <div class="h-100">
-    <div v-if="loading" class="h-100">
-      <table class="w-100 h-100">
-        <tr>
-          <td class="text-center align-middle">
-            <div class="spinner-border m-5 spinner-border-lg" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
-          </td>
-        </tr>
-      </table>
+  <div>
+    <div v-if="loading">
+      <div class="text-center">
+        <div
+          class="spinner-border m-5 spinner-border-lg"
+          style="width: 3rem; height: 3rem;  border-top-color: rgb(136, 255, 24);
+                                                                  border-left-color: rgb(136, 255, 24);
+                                                                  border-right-color: rgb(136, 255, 24);
+                                                                  border-bottom-color: rgb(97, 97, 97); "
+          role="status"
+        >
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
     </div>
     <div v-else>
-      <video-player :options="videoOptions" :detail="detail" />
+      <video-player :options="videoOptions" />
     </div>
   </div>
 </template>
@@ -34,20 +37,13 @@ export default {
     return {
       player: null,
       stream_link: "",
-      loading: false,
-      detail :null
+      loading: false
     };
   },
   created() {
     this.loading = true;
     NProgress.start();
-    let token = CookieService.getToken();
-    StreamsServices.postDetail({ streamId: this.stream_id, token: token }).then(
-      response => {
-        this.detail = response.data;
-      }
-    );
-    StreamsServices.getStream(this.stream_id, this.settings,token)
+    StreamsServices.getStream(this.stream_id, this.settings)
       .then(response => {
         this.stream_link = response.data.stream_link;
       })
@@ -56,39 +52,40 @@ export default {
         this.loading = false;
         this.keepAlive();
         this.interval = setInterval(this.keepAlive, 20000);
-      });
-  },
-  beforeDestroy(){
-    if(this.interval){
-      clearInterval(this.interval);
-    }
+      }).catch(error => {
+      const notification = {
+        type: "error",
+        message: "There was a problem fetching the Video: " + error.message
+      };
+      this.$store.dispatch("notification/addNotification", notification, { root: true });
+    });
   },
   props: ["stream_id", "settings"],
   computed: {
     videoOptions() {
       return {
-        autoplay: true,
+        autoplay: false,
         controls: true,
-        liveui: true,
-        //SeekToLive: true
         sources: [
           {
             src: this.stream_link,
             type: "application/dash+xml"
           }
         ],
-        poster: "http://placehold.it/380?text="+this.detail.name
+        poster: "http://placehold.it/380?text=DMAX Video 2"
       };
     }
   },
   methods: {
     keepAlive() {
+      CookieService.getToken().then(token => {
         StreamsServices.postKeepAlive({
-          token: CookieService.getToken(),
+          token: token,
           audiopreset: this.settings.videoPresetId,
           videopreset: this.settings.audioPresetId,
           transcodedVideoUri: this.stream_link
         }).then(() => {});
+      });
     }
   }
 };

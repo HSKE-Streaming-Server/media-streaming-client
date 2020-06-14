@@ -11,17 +11,20 @@
       paginationColor="white"
       easing="ease-out"
     >
-      <slide v-for="media in content" v-bind:key="media.id" :data-name="media.name">
+      <slide
+        v-for="media in content"
+        v-bind:key="media.id"
+        :data-name="media.name"
+      >
         <div class="col-12">
           <router-link
             :to="{
               name: 'stream',
-              params: { stream_id: media.id, source: media.category }
+              params: { stream_id: media.id, source: source }
             }"
           >
             <div class="card card-body">
-              <img v-if="media.image == null" class="img-fluid" :src="'http://placehold.it/380?text='+media.name" />
-              <img v-if="media.image != null" class="img-fluid" :src="media.image" />
+              <img class="img-fluid" :src="media.image" />
               <p class="m-0 text-center">{{ media.name }}</p>
             </div>
           </router-link>

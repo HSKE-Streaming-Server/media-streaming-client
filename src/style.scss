@@ -1,40 +1,31 @@
-$white: white;
-$gray: rgb(97, 97, 97);
+$white:white;
+$gray:rgb(97, 97, 97);
 $dark-gray: rgb(50, 50, 50);
-$black: rgb(32, 32, 32);
-$neon-blue: rgb(0, 255, 255);
-$neon-blue-green: rgb(68, 255, 140);
-$neon-green: rgb(136, 255, 24);
+$black:rgb(32, 32, 32);
+$neon-blue:rgb(0,255,255);
+$neon-blue-green:rgb(68, 255, 140);
+$neon-green:rgb(136, 255, 24);
 
-.font {
-  font-family: Helvetica;
+.font{
+    font-family: Helvetica;
 }
 
-.spinner-border {
-  width: 3rem;
-  height: 3rem;
-  border-top-color: rgb(136, 255, 24);
-  border-left-color: rgb(136, 255, 24);
-  border-right-color: rgb(136, 255, 24);
-  border-bottom-color: rgb(97, 97, 97);
+.glow{
+    -webkit-box-shadow: 0px 0px 6px 0px $neon-green, 0px 0px 14px -0px $neon-blue;
+    -moz-box-shadow: 0px 0px 6px 0px $neon-green, 0px 0px 14px -0px $neon-blue;
+    box-shadow: 0px 0px 6px 0px $neon-green, 0px 0px 14px -0px $neon-blue;
 }
 
-.glow {
-  -webkit-box-shadow: 0px 0px 6px 0px $neon-green, 0px 0px 14px -0px $neon-blue;
-  -moz-box-shadow: 0px 0px 6px 0px $neon-green, 0px 0px 14px -0px $neon-blue;
-  box-shadow: 0px 0px 6px 0px $neon-green, 0px 0px 14px -0px $neon-blue;
+.glow-right{
+    -webkit-box-shadow: 4px 0px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
+    -moz-box-shadow: 4px 0px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
+    box-shadow: 4px 0px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
 }
 
-.glow-right {
-  -webkit-box-shadow: 4px 0px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
-  -moz-box-shadow: 4px 0px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
-  box-shadow: 4px 0px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
-}
-
-.glow-center {
-  -webkit-box-shadow: 4px 4px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
-  -moz-box-shadow: 4px 4px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
-  box-shadow: 4px 4px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
+.glow-center{
+    -webkit-box-shadow: 4px 4px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
+    -moz-box-shadow: 4px 4px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
+    box-shadow: 4px 4px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
 }
 
 /* Scrollbar Style */
@@ -43,19 +34,19 @@ $neon-green: rgb(136, 255, 24);
 }
 
 ::-webkit-scrollbar-track {
-  background: $dark-gray;
+  background: $dark-gray; 
 }
-
+  
 ::-webkit-scrollbar-thumb {
-  background: $neon-blue;
+  background: $neon-blue; 
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: $neon-green;
+  background: $neon-green; 
 }
 
 #nprogress {
-  height: 6px;
+  height:6px;
 }
 
 #nprogress .bar {

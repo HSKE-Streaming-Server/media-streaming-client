@@ -5,9 +5,9 @@ export const namespaced = true;
 
 export const state = {
     userData: {
-        loggedIn: false,
-        name: null,
-        token: null
+        loggedIn:false,
+        name:null,
+        token:null
     }
 };
 
@@ -32,7 +32,7 @@ export const actions = {
             return response.data.success;
         }).catch(() => {return false});
     },
-    authenticate({ commit }) {
+    authenticate({ commit, dispatch }){
         let token = CookieService.getToken();
         if (!token) return false;
         return StreamsServices.postToken(token).then(response => {
@@ -44,17 +44,16 @@ export const actions = {
                 CookieService.removeToken();
                 return false;
             }
-        }).catch(() => {return false});
+        }).catch(error => {
+            const notification = {
+                type: "error",
+                message: "There was a problem with authenticate: " + error.message
+            };
+            dispatch("notification/addNotification", notification, { root: true });
+        });
     },
-    logout({ commit }) {
-        let token = CookieService.getToken();
-        if (!token) return false;
-        return StreamsServices.postLogout(token).then(response => {
-            if (response.data.success) {
-                commit("SET_ALL_UserData", { token: null, loggedIn: false, name: null })
-                CookieService.removeToken();
-            }
-            return response.data.success;
-        }).catch(() => {return false});
+    logout({ commit }){
+        commit("SET_ALL_UserData",{token:null,loggedIn:false,name:null})
+        CookieService.removeToken();
     }
 };
