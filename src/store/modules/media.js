@@ -1,5 +1,5 @@
 import StreamsServices from "../../services/StreamsServices";
-
+import CookieService from "../../services/CookieSerice";
 export const namespaced = true;
 
 export const state = {
@@ -14,10 +14,10 @@ export const mutations = {
 
 export const actions = {
   fetchAllMedia({ commit, dispatch }, source) {
-    return StreamsServices.getMedia(source)
-      .then(response => {
-        commit("SET_ALL_Media", response.data);
-      })
+    let token = CookieService.getToken();
+    return StreamsServices.getMedia(source,token).then(response => {
+      commit("SET_ALL_Media", response.data);
+    })
       .catch(error => {
         const notification = {
           type: "error",

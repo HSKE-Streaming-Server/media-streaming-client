@@ -1,4 +1,5 @@
 import StreamsServices from "../../services/StreamsServices";
+import CookieService from "../../services/CookieSerice";
 
 export const namespaced = true;
 
@@ -21,7 +22,8 @@ export const mutations = {
 
 export const actions = {
   fetchAllPresets({ commit, dispatch }) {
-    StreamsServices.getPresets().then(response => {
+    let token = CookieService.getToken();
+    StreamsServices.getPresets(token).then(response => {
       commit("SET_ALL_PRESETS", response.data);
     }).catch(error => {
       const notification = {
