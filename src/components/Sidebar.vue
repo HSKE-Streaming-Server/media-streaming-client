@@ -76,6 +76,7 @@ export default {
   color: $white;
   background-color: $black !important;
   border-bottom: none !important;
+  transition: background .75s;
 }
 
 .list-group-item:hover {

@@ -27,3 +27,12 @@ export default {
   }
 };
 </script>
+
+<style scoped lang="scss">
+@import "../style.scss";
+h1 {
+background: -webkit-linear-gradient($neon-green, $neon-blue);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+</style>
