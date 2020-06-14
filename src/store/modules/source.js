@@ -14,7 +14,7 @@ export const mutations = {
 };
 
 export const actions = {
-  fetchAllSources({ commit }) {
+  fetchAllSources({ commit, dispatch }) {
     let token = CookieService.getToken();
     return StreamsServices.getSource(token).then(response => {
       commit("SET_ALL_SOURCES", response.data);
