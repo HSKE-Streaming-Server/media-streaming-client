@@ -1,14 +1,14 @@
 <template>
   <div class="container">
-    <div class="row align-items-center">
+    <div class="row align-items-center" v-if="detail!= null">
       <div class="col-6 mt-5 card">
         <img
           class="card-img-top mt-2"
-          src="http://placehold.it/380?text=POSTER"
+          :src="'http://placehold.it/380?text='+detail.name"
           alt="Card image cap"
         />
         <div class="card-body">
-          <p class="card-text">Here some description will be written</p>
+          <p class="card-text">{{detail.description}}</p>
           <router-link
             class="btn btn-primary"
             :to="{
@@ -16,21 +16,36 @@
               params: { stream_id: stream_id, settings: settings }
             }"
             v-on:click.native="addToHistory(stream_id)"
-          >
-            Play Now</router-link
-          >
+          >Play Now</router-link>
         </div>
       </div>
     </div>
+    <table class="w-100 h-100" v-if="detail== null">
+      <tr>
+        <td class="text-center align-middle">
+          <div
+            class="spinner-border m-5 spinner-border-lg"
+            role="status"
+          ></div>
+        </td>
+      </tr>
+    </table>
   </div>
 </template>
 
 <script>
+import StreamsServices from "../services/StreamsServices";
+import CookieSerice from "../services/CookieSerice";
 import { mapState, mapActions } from "vuex";
 
 export default {
   name: "Stream",
   props: ["stream_id"],
+  data() {
+    return {
+      detail: null
+    };
+  },
   computed: {
     ...mapState("settings", ["settings"])
   },
@@ -40,6 +55,12 @@ export default {
   },
   created() {
     this.fetchAllSettings();
+    let token = CookieSerice.getToken();
+    StreamsServices.postDetail({ streamId: this.stream_id, token: token }).then(
+      response => {
+        this.detail = response.data;
+      }
+    );
   }
 };
 </script>
