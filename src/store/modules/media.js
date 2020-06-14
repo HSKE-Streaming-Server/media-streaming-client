@@ -14,7 +14,7 @@ export const mutations = {
 };
 
 export const actions = {
-   fetchAllMedia({ commit }, source) {
+   fetchAllMedia({ commit, dispatch }, source) {
     let token = CookieService.getToken();
     return StreamsServices.getMedia(source,token).then(response => {
       commit("SET_ALL_Media", response.data);

@@ -32,7 +32,7 @@
         </td>
       </tr>
     </table>
-    <NotificationContainer></NotificationContainer>
+
   </div>
 </template>
 <script>
@@ -48,9 +48,6 @@ export default {
       username: null,
       password: null
     };
-  },
-  components: {
-    NotificationContainer
   },
   computed: {
     ...mapState("authentication", ["userData"])
@@ -70,18 +67,17 @@ export default {
           } else {
             this.username = null;
             this.password = null;
+            this.$swal({
+              title: "Usename or Password is wrong",
+              text:
+                      "Please try again!",
+              showCancelButton: false,
+              showConfirmButton: true,
+              allowOutsideClick: true
+            })
           }
         }
-      ).catch(() => {
-        this.$swal({
-          title: "Usename or Password is wrong",
-          text:
-                  "Please try again!",
-          showCancelButton: false,
-          showConfirmButton: true,
-          allowOutsideClick: true
-        });
-      });
+      );
     },
     onKeyUp: function(event) {
       if (event.keyCode === 13) {

@@ -21,7 +21,7 @@ export const mutations = {
 };
 
 export const actions = {
-  fetchAllPresets({ commit }) {
+  fetchAllPresets({ commit, dispatch }) {
     let token = CookieService.getToken();
     StreamsServices.getPresets(token).then(response => {
       commit("SET_ALL_PRESETS", response.data);
