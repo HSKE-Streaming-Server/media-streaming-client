@@ -12,8 +12,9 @@
             <span id="span2"></span>
             <span id="span3"></span>
           </button>
-
+          <NotificationContainer></NotificationContainer>
           <router-view />
+
         </div>
       </div>
     </div>
@@ -22,11 +23,12 @@
 
 <script>
 import Sidebar from "@/components/Sidebar.vue";
-
+import NotificationContainer from "../components/NotificationContainer";
 export default {
   name: "Navigation",
   components: {
-    Sidebar
+    Sidebar,
+    NotificationContainer
   },
   data() {
     return {

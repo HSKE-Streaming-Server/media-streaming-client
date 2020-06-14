@@ -7,6 +7,7 @@ import "dashjs/dist/dash.all.debug";
 import "dashjs/dist/dash.all.min"
 import "videojs-contrib-dash/dist/videojs-dash.min";
 import "nprogress/nprogress.css"
+
 //import videojs from "video.js";
 import VueResource from 'vue-resource'
 import VueSweetalert2 from 'vue-sweetalert2'; //test

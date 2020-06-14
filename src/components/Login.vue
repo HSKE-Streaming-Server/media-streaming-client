@@ -32,11 +32,14 @@
         </td>
       </tr>
     </table>
+    <NotificationContainer></NotificationContainer>
   </div>
 </template>
 <script>
 import { mapState, mapActions } from "vuex";
+import NotificationContainer from "./NotificationContainer";
 import "hash.js";
+
 
 export default {
   name: "Login",
@@ -45,6 +48,9 @@ export default {
       username: null,
       password: null
     };
+  },
+  components: {
+    NotificationContainer
   },
   computed: {
     ...mapState("authentication", ["userData"])
@@ -66,7 +72,16 @@ export default {
             this.password = null;
           }
         }
-      );
+      ).catch(() => {
+        this.$swal({
+          title: "Usename or Password is wrong",
+          text:
+                  "Please try again!",
+          showCancelButton: false,
+          showConfirmButton: true,
+          allowOutsideClick: true
+        });
+      });
     },
     onKeyUp: function(event) {
       if (event.keyCode === 13) {

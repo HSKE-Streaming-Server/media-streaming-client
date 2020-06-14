@@ -25,6 +25,12 @@ export const actions = {
     let token = CookieService.getToken();
     StreamsServices.getPresets(token).then(response => {
       commit("SET_ALL_PRESETS", response.data);
+    }).catch(error => {
+      const notification = {
+        type: "error",
+        message: "There was a problem fetching the presets: " + error.message
+      };
+      dispatch("notification/addNotification", notification, { root: true });
     });
   }
 };
