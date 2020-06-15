@@ -23,7 +23,7 @@
         >Setting</router-link
       >
     </div>
-    <a id="logout-btn" class="mb-2"  v-on:click="performLogout">Logout</a>
+    <a id="logout-btn" class="mb-2" v-on:click="performLogout">Logout</a>
   </div>
 </template>
 
@@ -40,11 +40,11 @@ export default {
   },
   methods: {
     ...mapActions("authentication", ["logout"]),
-    performLogout:function(){
+    performLogout: function() {
       this.logout().then(() => {
         if (!this.userData.loggedIn) {
-          this.$router.push({name:"Login"});
-        } 
+          this.$router.push({ name: "Login" });
+        }
       });
     }
   }
@@ -74,20 +74,24 @@ export default {
 
 .list-group-item {
   color: $white;
-  background-color: $black !important;
   border-bottom: none !important;
-  transition: background .75s;
+  background: linear-gradient(to right, $dark-gray 50%, $black 50%) right bottom;
+  background-size: 200% 100%;
+  transition: all 1s ease;
 }
 
 .list-group-item:hover {
-  color: $white !important;
-  background-color: $dark-gray !important;
+  background-position: left bottom;
   text-decoration: none !important;
 }
 
 .list-group-item.router-link-active {
   @extend .glow-center;
-  background-color: $dark-gray !important;
+  background: linear-gradient(
+    to right,
+    $dark-gray 50%,
+    $dark-gray 50%
+  ) !important;
   z-index: 100;
 }
 
@@ -98,7 +102,7 @@ export default {
   bottom: 0 !important;
 }
 
-#logout-btn:hover{
+#logout-btn:hover {
   cursor: pointer;
 }
 
