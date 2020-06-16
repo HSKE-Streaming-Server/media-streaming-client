@@ -105,7 +105,7 @@ export default {
     this.fetchAllPresets();
     this.fetchAllSettings();
     if (this.settings.videoPresetId == -1) {
-      if(this.presets.length<0){
+      if(this.presets.length>0){
       this.settings.videoPresetId = this.presets.videoPresets[
         Object.keys(this.presets.videoPresets)[0]
       ].presetID;}else{
@@ -115,7 +115,7 @@ export default {
 
     }
     if (this.settings.audioPresetId == -1) {
-      if(this.presets.length<0){
+      if(this.presets.length>0){
       this.settings.audioPresetId = this.presets.audioPresets[
         Object.keys(this.presets.audioPresets)[0]
       ].presetID;}else{
