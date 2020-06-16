@@ -18,7 +18,9 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 Vue.use(VueSweetalert2);
 Vue.use(VueResource);
 
-
+Vue.filter('uppercase', function (value) {
+  return value.toUpperCase()
+})
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import carousel from "vue-carousel"

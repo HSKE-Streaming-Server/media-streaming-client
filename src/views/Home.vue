@@ -2,13 +2,13 @@
   <div class="home">
     <table class="w-100 h-100">
       <tr>
-        <td class="text-center align-middle" v-if="history"> 
+        <td class="text-center align-middle" v-if="history === null">
           <Carusel class="my-3" :content="history" :id="0"></Carusel>
         </td>
-        <td class="text-center align-middle" v-if="!history">
+        <td class="text-center align-middle" v-else>
           <p>You have no History yet.</p>
           <router-link :to="{ name: 'source', params: { type: 'video' } }">
-            <button class="btn btn-dark">start watching</button>
+            <button class="btn">start watching</button>
           </router-link>
         </td>
       </tr>
@@ -45,4 +45,12 @@ export default {
 .home {
   height: 100vh;
 }
+.btn {
+  background-color: $neon-blue-green !important;
+  transition: background .75s;
+}
+
+  .btn:hover {
+    background-color: $neon-blue !important;
+  }
 </style>

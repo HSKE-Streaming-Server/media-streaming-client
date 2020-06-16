@@ -11,7 +11,7 @@
               <button
                 class="btn btn-dark dropdown-toggle"
                 type="button"
-                id="dropdownMenuButton"
+                id="dropdownMenuButton1"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
@@ -51,7 +51,7 @@
               <button
                 class="btn btn-dark dropdown-toggle"
                 type="button"
-                id="dropdownMenuButton"
+                id="dropdownMenuButton2"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
@@ -131,5 +131,17 @@ export default {
 
 hr {
   border-color: $dark-gray;
+}
+
+.btn {
+  background-color: $neon-blue-green !important;
+  transition: background .75s;
+}
+
+.btn:hover {
+  background-color: $neon-blue !important;
+}
+dropdown-item{
+  cursor: pointer;
 }
 </style>
