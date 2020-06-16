@@ -2,7 +2,7 @@
   <div class="home">
     <table class="w-100 h-100">
       <tr>
-        <td class="text-center align-middle" v-if="history === null">
+        <td class="text-center align-middle" v-if="history.length>0">
           <Carusel class="my-3" :content="history" :id="0"></Carusel>
         </td>
         <td class="text-center align-middle" v-else>
@@ -47,10 +47,10 @@ export default {
 }
 .btn {
   background-color: $neon-blue-green !important;
-  transition: background .75s;
+  transition: background 0.75s;
 }
 
-  .btn:hover {
-    background-color: $neon-blue !important;
-  }
+.btn:hover {
+  background-color: $neon-blue !important;
+}
 </style>
