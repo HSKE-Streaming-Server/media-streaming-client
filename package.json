@@ -19,6 +19,7 @@
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
     "dashjs": "^3.1.0",
+    "gsap": "^3.3.2",
     "nprogress": "^0.2.0",
     "video.js": "^7.7.6",
     "videojs-contrib-dash": "^2.11.0",

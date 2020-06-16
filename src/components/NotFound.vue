@@ -37,5 +37,13 @@
   .btn {
     background-color: $neon-blue-green !important;
   }
+  .btn:hover {
+    background-color: $neon-blue !important;
+  }
 
+  h1 {
+    background: -webkit-linear-gradient($neon-green, $neon-blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 </style>

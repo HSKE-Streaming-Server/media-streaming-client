@@ -13,8 +13,9 @@
             <span id="span3"></span>
           </button>
           <NotificationContainer></NotificationContainer>
-          <router-view />
-
+          <transition name="fade" mode="out-in">
+            <router-view />
+          </transition>
         </div>
       </div>
     </div>
@@ -146,6 +147,17 @@ export default {
 
   #menu-toggle {
     display: none;
+  }
+
+  .fade-enter {
+    opacity: 0;
+  }
+  .fade-leave-to {
+    opacity: 0;
+  }
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity .5s ease-out;
   }
 }
 </style>

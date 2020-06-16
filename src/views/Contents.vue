@@ -1,6 +1,6 @@
 <template>
   <div class="Contents py-4">
-    <h1 class="text-center">{{ source }} Mediathek</h1>
+    <h1 class="text-center">{{ source | uppercase }} MEDIATHEK</h1>
     <Carusel class="my-3" :content="media" :source="source"></Carusel>
   </div>
 </template>
@@ -27,3 +27,12 @@ export default {
   }
 };
 </script>
+
+<style scoped lang="scss">
+@import "../style.scss";
+h1 {
+background: -webkit-linear-gradient($neon-green, $neon-blue);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+</style>
