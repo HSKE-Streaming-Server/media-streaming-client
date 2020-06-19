@@ -2,6 +2,11 @@
   <div class="settings">
     <div class="container py-4">
       <table class="mx-4 w-100" v-if="settings">
+        <tr>
+          <td colspan="2">
+             <h2>Default Settings</h2>
+          </td>
+        </tr>
         <tr v-if="presets && presets.videoPresets&& settings && settings.videoPresetId != -1">
           <td>
             <h3>Video</h3>
