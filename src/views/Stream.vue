@@ -13,7 +13,7 @@
               class="btn"
               :to="{
                 name: 'play-now',
-                params: { stream_id: stream_id, settings: settings }
+                params: { stream_id: stream_id}
               }"
               v-on:click.native="addToHistory(stream_id)"
               >Play Now</router-link
@@ -36,7 +36,7 @@
 <script>
 import StreamsServices from "../services/StreamsServices";
 import CookieSerice from "../services/CookieSerice";
-import { mapState, mapActions } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "Stream",
@@ -47,14 +47,13 @@ export default {
     };
   },
   computed: {
-    ...mapState("settings", ["settings"])
+
   },
   methods: {
     ...mapActions("history", ["addToHistory"]),
-    ...mapActions("settings", ["fetchAllSettings"])
   },
   created() {
-    this.fetchAllSettings();
+
     let token = CookieSerice.getToken();
     StreamsServices.postDetail({ streamId: this.stream_id, token: token }).then(
       response => {
