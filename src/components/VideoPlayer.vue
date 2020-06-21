@@ -25,22 +25,21 @@ export default {
         return {};
       }
     },
-    detail: {
-
-    }
+    detail: {}
   },
   data() {
     return {
       player: null,
+      timeout: null,
+      played: false
     };
   },
   created() {
-
-    if(this.detail['livestream'] === false) {
+    if (this.detail["livestream"] === false) {
       this.$swal({
         title: "The Video is almost ready!",
         text:
-                "Please wait while the video is buffering. This can take a minute or two!",
+          "Please wait while the video is buffering. This can take a minute or two!",
         showCancelButton: false,
         showConfirmButton: false,
         allowOutsideClick: false
@@ -52,12 +51,17 @@ export default {
     this.player = videojs(
       this.$refs.videoPlayer,
       this.options,
-      function onPlayerReady() {
-
-      }
+      function onPlayerReady() {}
     );
+    this.timeout = setTimeout(() => {
+      if (this.played === false) {
+        window.location.reload()
+      }
+    }, 50000);
   },
   beforeDestroy() {
+    clearTimeout(this.timeout);
+    this.$swal.close();
     if (this.player) {
       this.player.reset();
       this.player.dispose();
@@ -65,7 +69,8 @@ export default {
   },
   methods: {
     play() {
-      if(this.detail.livestream === false) {
+      if (this.detail.livestream === false) {
+        this.played = true;
         this.$swal.close();
       }
     }
