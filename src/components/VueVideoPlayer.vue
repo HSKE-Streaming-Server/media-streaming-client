@@ -46,7 +46,6 @@ export default {
     let token = CookieService.getToken();
     StreamsServices.postDetail({ streamId: this.stream_id, token: token }).then(
       response => {
-        console.log("test");
         this.detail = response.data;
       }
     );
