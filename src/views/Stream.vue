@@ -99,6 +99,7 @@ export default {
     ...mapState("settings", ["settings"])
   },
   methods: {
+    ...mapActions("settings", ["fetchAllSettings"]),
     ...mapActions("presets", ["fetchAllPresets"]),
     ...mapActions("history", ["addToHistory"]),
     setSetting: function(key, value) {
