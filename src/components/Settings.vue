@@ -1,7 +1,12 @@
 <template>
   <div class="settings">
-    <div class="container">
-      <table class="m-4 w-100" v-if="settings">
+    <div class="container py-4">
+      <table class="mx-4 w-100" v-if="settings">
+        <tr>
+          <td colspan="2">
+             <h2>Default Settings</h2>
+          </td>
+        </tr>
         <tr v-if="presets && presets.videoPresets&& settings && settings.videoPresetId != -1">
           <td>
             <h3>Video</h3>
@@ -26,6 +31,9 @@
               </div>
             </div>
           </td>
+        </tr>
+        <tr v-if="presets && presets.videoPresets&& settings && settings.videoPresetId != -1">
+          <td colspan="2" class="description py-2">"{{presets.videoPresets[settings.videoPresetId].description}}"</td>
         </tr>
         <tr v-if="presets && presets.videoPresets&& settings && settings.videoPresetId != -1">
           <td>Resolution</td>
@@ -68,6 +76,9 @@
           </td>
         </tr>
         <tr v-if="presets.audioPresets&& settings  && settings.audioPresetId != -1">
+          <td colspan="2" class="description py-2">"{{presets.audioPresets[settings.audioPresetId].description}}"</td>
+        </tr>
+        <tr v-if="presets.audioPresets&& settings  && settings.audioPresetId != -1">
           <td>Bitrate</td>
           <td>{{presets.audioPresets[settings.audioPresetId].bitrate}} Bit</td>
         </tr>
@@ -105,20 +116,21 @@ export default {
     this.fetchAllPresets();
     this.fetchAllSettings();
     if (this.settings.videoPresetId == -1) {
-      if(this.presets.length<0){
-      this.settings.videoPresetId = this.presets.videoPresets[
-        Object.keys(this.presets.videoPresets)[0]
-      ].presetID;}else{
+      if (this.presets.length > 0) {
+        this.settings.videoPresetId = this.presets.videoPresets[
+          Object.keys(this.presets.videoPresets)[0]
+        ].presetID;
+      } else {
         this.settings.videoPresetId = 1;
       }
       this.saveAllSettings(this.settings);
-
     }
     if (this.settings.audioPresetId == -1) {
-      if(this.presets.length<0){
-      this.settings.audioPresetId = this.presets.audioPresets[
-        Object.keys(this.presets.audioPresets)[0]
-      ].presetID;}else{
+      if (this.presets.length > 0) {
+        this.settings.audioPresetId = this.presets.audioPresets[
+          Object.keys(this.presets.audioPresets)[0]
+        ].presetID;
+      } else {
         this.settings.audioPresetId = 1;
       }
       this.saveAllSettings(this.settings);
@@ -135,13 +147,23 @@ hr {
 
 .btn {
   background-color: $neon-blue-green !important;
-  transition: background .75s;
+  transition: background 0.75s;
 }
 
 .btn:hover {
   background-color: $neon-blue !important;
 }
-dropdown-item{
+dropdown-item {
   cursor: pointer;
 }
+
+.description{
+  font-style:italic; 
+  color:lightgray;
+}
+
+.dropdown-item:hover{
+  cursor: pointer;
+}
+
 </style>
