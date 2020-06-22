@@ -16,7 +16,7 @@
                   class="btn"
                   :to="{
                 name: 'play-now',
-                params: { stream_id: stream_id}
+                params: { stream_id: stream_id,settings:settings}
               }"
                   v-on:click.native="addToHistory(stream_id)"
                 >Play Now</router-link>
