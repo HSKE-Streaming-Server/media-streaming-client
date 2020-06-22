@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <template>
   <div id="sidebar">
     <div class="pt-3 pb-4">

@@ -2,18 +2,11 @@
   <div>
     <router-view />
   </div>
-
 </template>
 
 <script>
-
 export default {
-  name: "App",
-  components: {
-
-  },
-  computed: {},
-  methods: {}
+  name: "App"
 };
 </script>
 
@@ -35,5 +28,4 @@ body {
 .btn-dark {
   background-color: $dark-gray !important;
 }
-
 </style>

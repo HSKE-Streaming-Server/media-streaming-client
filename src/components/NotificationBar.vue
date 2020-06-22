@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <template>
   <div class="notification-bar">
     <div class="alert alert-danger" role="alert">
@@ -22,7 +23,10 @@ export default {
     }
   },
   mounted() {
-    this.timeout = setTimeout(() => this.removeNotification(this.notification), 5000);
+    this.timeout = setTimeout(
+      () => this.removeNotification(this.notification),
+      5000
+    );
   },
   beforeDestroy() {
     clearTimeout(this.timeout);

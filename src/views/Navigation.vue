@@ -1,6 +1,6 @@
 <template>
   <div id="navigation">
-    <div class="d-flex" id="wrapper" :class="{toggled: this.isToggled}">
+    <div class="d-flex" id="wrapper" :class="{ toggled: this.isToggled }">
       <div class="bg-light border-right" id="sidebar-wrapper">
         <Sidebar></Sidebar>
       </div>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import Sidebar from "@/components/Sidebar.vue";
+import Sidebar from "../components/Sidebar.vue";
 import NotificationContainer from "../components/NotificationContainer";
 export default {
   name: "Navigation",
@@ -62,7 +62,7 @@ export default {
 <style lang="scss">
 @import "../style.scss";
 
-#navigation{
+#navigation {
   background-color: $gray;
   color: $white;
 }
@@ -88,9 +88,8 @@ export default {
   span {
     width: 2rem;
     margin: 0.2rem;
-    border: 0.2rem solid;
     display: block;
-    border-color:$dark-gray
+    border: 0.2rem solid $dark-gray;
   }
 }
 
@@ -101,19 +100,19 @@ export default {
 
 #menu-toggle:hover {
   #span1 {
-    -webkit-box-shadow: 0px 0px 3px 0px $neon-blue;
-    -moz-box-shadow: 0px 0px 3px 0px $neon-blue;
-    box-shadow: 0px 0px 3px 0px $neon-blue;
+    -webkit-box-shadow: 0 0 3px 0 $neon-blue;
+    -moz-box-shadow: 0 0 3px 0 $neon-blue;
+    box-shadow: 0 0 3px 0 $neon-blue;
   }
   #span2 {
-    -webkit-box-shadow: 0px 0px 3px 0px $neon-blue-green;
-    -moz-box-shadow: 0px 0px 3px 0px $neon-blue-green;
-    box-shadow: 0px 0px 3px 0px $neon-blue-green;
+    -webkit-box-shadow: 0 0 3px 0 $neon-blue-green;
+    -moz-box-shadow: 0 0 3px 0 $neon-blue-green;
+    box-shadow: 0 0 3px 0 $neon-blue-green;
   }
   #span3 {
-    -webkit-box-shadow: 0px 0px 3px 0px $neon-green;
-    -moz-box-shadow: 0px 0px 3px 0px $neon-green;
-    box-shadow: 0px 0px 3px 0px $neon-green;
+    -webkit-box-shadow: 0 0 3px 0 $neon-green;
+    -moz-box-shadow: 0 0 3px 0 $neon-green;
+    box-shadow: 0 0 3px 0 $neon-green;
   }
 }
 
@@ -157,7 +156,7 @@ export default {
   }
   .fade-enter-active,
   .fade-leave-active {
-    transition: opacity .5s ease-out;
+    transition: opacity 0.5s ease-out;
   }
 }
 </style>

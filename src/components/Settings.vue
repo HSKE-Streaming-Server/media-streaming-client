@@ -1,13 +1,21 @@
+<!--suppress ALL -->
 <template>
   <div class="settings">
     <div class="container py-4">
       <table class="mx-4 w-100" v-if="settings">
         <tr>
           <td colspan="2">
-             <h2>Default Settings</h2>
+            <h2>Default Settings</h2>
           </td>
         </tr>
-        <tr v-if="presets && presets.videoPresets&& settings && settings.videoPresetId != -1">
+        <tr
+          v-if="
+            presets &&
+              presets.videoPresets &&
+              settings &&
+              settings.videoPresetId != -1
+          "
+        >
           <td>
             <h3>Video</h3>
           </td>
@@ -20,37 +28,82 @@
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
-              >{{presets.videoPresets[settings.videoPresetId].displayName}}</button>
+              >
+                {{ presets.videoPresets[settings.videoPresetId].displayName }}
+              </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a
                   v-for="(preset, index) in presets.videoPresets"
                   :key="`preset-${index}`"
                   class="dropdown-item"
-                  v-on:click="setSetting('videoPresetId',preset.presetID)"
-                >{{preset.displayName}}</a>
+                  v-on:click="setSetting('videoPresetId', preset.presetID)"
+                  >{{ preset.displayName }}</a
+                >
               </div>
             </div>
           </td>
         </tr>
-        <tr v-if="presets && presets.videoPresets&& settings && settings.videoPresetId != -1">
-          <td colspan="2" class="description py-2">"{{presets.videoPresets[settings.videoPresetId].description}}"</td>
+        <tr
+          v-if="
+            presets &&
+              presets.videoPresets &&
+              settings &&
+              settings.videoPresetId !== -1
+          "
+        >
+          <td colspan="2" class="description py-2">
+            "{{ presets.videoPresets[settings.videoPresetId].description }}"
+          </td>
         </tr>
-        <tr v-if="presets && presets.videoPresets&& settings && settings.videoPresetId != -1">
+        <tr
+          v-if="
+            presets &&
+              presets.videoPresets &&
+              settings &&
+              settings.videoPresetId !== -1
+          "
+        >
           <td>Resolution</td>
-          <td>{{presets.videoPresets[settings.videoPresetId].resolutionX}} x {{presets.videoPresets[settings.videoPresetId].resolutionY}}</td>
+          <td>
+            {{ presets.videoPresets[settings.videoPresetId].resolutionX }} x
+            {{ presets.videoPresets[settings.videoPresetId].resolutionY }}
+          </td>
         </tr>
-        <tr v-if="presets && presets.videoPresets&& settings && settings.videoPresetId != -1">
+        <tr
+          v-if="
+            presets &&
+              presets.videoPresets &&
+              settings &&
+              settings.videoPresetId !== -1
+          "
+        >
           <td>Bitrate</td>
-          <td>{{presets.videoPresets[settings.videoPresetId].bitrate}} Bit</td>
+          <td>
+            {{ presets.videoPresets[settings.videoPresetId].bitrate }} Bit
+          </td>
         </tr>
 
-        <tr v-if="presets && presets.audioPresets&& settings  && settings.audioPresetId != -1">
+        <tr
+          v-if="
+            presets &&
+              presets.audioPresets &&
+              settings &&
+              settings.audioPresetId !== -1
+          "
+        >
           <td colspan="2">
             <hr />
           </td>
         </tr>
 
-        <tr v-if="presets && presets.audioPresets&& settings && settings.audioPresetId != -1">
+        <tr
+          v-if="
+            presets &&
+              presets.audioPresets &&
+              settings &&
+              settings.audioPresetId !== -1
+          "
+        >
           <td>
             <h3>Audio</h3>
           </td>
@@ -63,24 +116,39 @@
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
-              >{{presets.audioPresets[settings.audioPresetId].displayName}}</button>
+              >
+                {{ presets.audioPresets[settings.audioPresetId].displayName }}
+              </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a
                   v-for="(preset, index) in presets.audioPresets"
                   :key="`preset-${index}`"
                   class="dropdown-item"
-                  v-on:click="setSetting('audioPresetId',preset.presetID)"
-                >{{preset.displayName}}</a>
+                  v-on:click="setSetting('audioPresetId', preset.presetID)"
+                  >{{ preset.displayName }}</a
+                >
               </div>
             </div>
           </td>
         </tr>
-        <tr v-if="presets.audioPresets&& settings  && settings.audioPresetId != -1">
-          <td colspan="2" class="description py-2">"{{presets.audioPresets[settings.audioPresetId].description}}"</td>
+        <tr
+          v-if="
+            presets.audioPresets && settings && settings.audioPresetId !== -1
+          "
+        >
+          <td colspan="2" class="description py-2">
+            "{{ presets.audioPresets[settings.audioPresetId].description }}"
+          </td>
         </tr>
-        <tr v-if="presets.audioPresets&& settings  && settings.audioPresetId != -1">
+        <tr
+          v-if="
+            presets.audioPresets && settings && settings.audioPresetId != -1
+          "
+        >
           <td>Bitrate</td>
-          <td>{{presets.audioPresets[settings.audioPresetId].bitrate}} Bit</td>
+          <td>
+            {{ presets.audioPresets[settings.audioPresetId].bitrate }} Bit
+          </td>
         </tr>
       </table>
     </div>
@@ -157,13 +225,12 @@ dropdown-item {
   cursor: pointer;
 }
 
-.description{
-  font-style:italic; 
-  color:lightgray;
+.description {
+  font-style: italic;
+  color: lightgray;
 }
 
-.dropdown-item:hover{
+.dropdown-item:hover {
   cursor: pointer;
 }
-
 </style>

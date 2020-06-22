@@ -55,7 +55,7 @@ export default {
     );
     this.timeout = setTimeout(() => {
       if (this.played === false) {
-        window.location.reload()
+        window.location.reload();
       }
     }, 50000);
   },
@@ -80,9 +80,8 @@ export default {
 
 <style>
 .card {
-  margin: 0 auto;
   float: none;
-  margin-bottom: 10px;
+  margin: 0 auto 10px;
   background-color: rgb(97, 97, 97);
 }
 /* Change all text and icon colors in the player. */
@@ -90,14 +89,8 @@ export default {
 }
 
 /* Change the border of the big play button. */
-.vjs-matrix .vjs-big-play-button {
+.vjs-matrix {
   border-color: #00ff00;
   color: rgb(0, 255, 255);
-}
-.vjs-volume-level {
-}
-.vjs-play-progress {
-}
-.vjs-slider-bar {
 }
 </style>

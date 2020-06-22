@@ -10,11 +10,17 @@ export const state = {
 export const mutations = {
   SET_ALL_HISTORY(state, history) {
     let token = CookieService.getToken();
-    history.forEach((streamId) => {
-      if (state.history.filter((item) => { return item.id == streamId }).length == 0) {
-        StreamsServices.postDetail({ streamId: streamId, token: token }).then(response => {
-          state.history.push(response.data);
-        });
+    history.forEach(streamId => {
+      if (
+        state.history.filter(item => {
+          return item.id === streamId;
+        }).length === 0
+      ) {
+        StreamsServices.postDetail({ streamId: streamId, token: token }).then(
+          response => {
+            state.history.push(response.data);
+          }
+        );
       }
     });
   }
@@ -31,9 +37,9 @@ export const actions = {
     else temp = JSON.parse(temp);
     let newHistory = [];
     let result = temp.filter(tempItem => {
-      return tempItem.id == newHistoryElement;
+      return tempItem.id === newHistoryElement;
     });
-    if (result.length == 0) {
+    if (result.length === 0) {
       newHistory.push(newHistoryElement);
     }
     newHistory = newHistory.concat(temp);

@@ -1,8 +1,9 @@
+<!--suppress ALL -->
 <template>
   <div class="home">
     <table class="w-100 h-100">
       <tr>
-        <td class="text-center align-middle" v-if="history.length>0">
+        <td class="text-center align-middle" v-if="history.length > 0">
           <Carusel class="my-3" :content="history" :id="0"></Carusel>
         </td>
         <td class="text-center align-middle" v-else>
@@ -18,7 +19,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import Carusel from "@/components/Carusel.vue";
+import Carusel from "../components/Carusel.vue";
 
 export default {
   name: "Home",

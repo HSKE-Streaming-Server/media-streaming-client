@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <template>
   <div class="container">
     <div class="row align-items-center" v-if="detail != null">
@@ -15,11 +16,12 @@
                 <router-link
                   class="btn"
                   :to="{
-                name: 'play-now',
-                params: { stream_id: stream_id}
-              }"
+                    name: 'play-now',
+                    params: { stream_id: stream_id }
+                  }"
                   v-on:click.native="addToHistory(stream_id)"
-                >Play Now</router-link>
+                  >Play Now</router-link
+                >
               </td>
               <td>
                 <div class="dropdown">
@@ -30,16 +32,34 @@
                     data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
-                    v-bind:class="{'already-transcoded': isTrancoded('video',settings.videoPresetId)}"
-                  >{{presets.videoPresets[settings.videoPresetId].displayName}}</button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    v-bind:class="{
+                      'already-transcoded': isTrancoded(
+                        'video',
+                        settings.videoPresetId
+                      )
+                    }"
+                  >
+                    {{
+                      presets.videoPresets[settings.videoPresetId].displayName
+                    }}
+                  </button>
+                  <div
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                  >
                     <a
                       v-for="(preset, index) in presets.videoPresets"
                       :key="`preset-${index}`"
                       class="dropdown-item preset"
-                      v-on:click="setSetting('videoPresetId',preset.presetID)"
-                      v-bind:class="{'already-transcoded': isTrancoded('video',preset.presetID)}"
-                    >{{preset.displayName}}</a>
+                      v-on:click="setSetting('videoPresetId', preset.presetID)"
+                      v-bind:class="{
+                        'already-transcoded': isTrancoded(
+                          'video',
+                          preset.presetID
+                        )
+                      }"
+                      >{{ preset.displayName }}</a
+                    >
                   </div>
                 </div>
               </td>
@@ -52,16 +72,34 @@
                     data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
-                    v-bind:class="{'already-transcoded': isTrancoded('audio',settings.audioPresetId)}"
-                  >{{presets.audioPresets[settings.audioPresetId].displayName}}</button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    v-bind:class="{
+                      'already-transcoded': isTrancoded(
+                        'audio',
+                        settings.audioPresetId
+                      )
+                    }"
+                  >
+                    {{
+                      presets.audioPresets[settings.audioPresetId].displayName
+                    }}
+                  </button>
+                  <div
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                  >
                     <a
                       v-for="(preset, index) in presets.audioPresets"
                       :key="`preset-${index}`"
                       class="dropdown-item preset"
-                      v-on:click="setSetting('audioPresetId',preset.presetID)"
-                      v-bind:class="{'already-transcoded': isTrancoded('audio',preset.presetID)}"
-                    >{{preset.displayName}}</a>
+                      v-on:click="setSetting('audioPresetId', preset.presetID)"
+                      v-bind:class="{
+                        'already-transcoded': isTrancoded(
+                          'audio',
+                          preset.presetID
+                        )
+                      }"
+                      >{{ preset.displayName }}</a
+                    >
                   </div>
                 </div>
               </td>
@@ -84,7 +122,7 @@
 <script>
 import StreamsServices from "../services/StreamsServices";
 import CookieSerice from "../services/CookieSerice";
-import { mapActions , mapState} from "vuex";
+import { mapActions, mapState } from "vuex";
 
 export default {
   name: "Stream",
@@ -106,22 +144,22 @@ export default {
       this.settings[key] = value;
     },
     isTrancoded: function(key, id) {
-      if (this.detail.existingTranscodes.length == 0) return false;
-      if (key == "video") {
+      if (this.detail.existingTranscodes.length === 0) return false;
+      if (key === "video") {
         return (
           this.detail.existingTranscodes.filter(preset => {
             return (
-              preset.videoPreset == id &&
-              preset.audioPreset == this.settings.audioPresetId
+              preset.videoPreset === id &&
+              preset.audioPreset === this.settings.audioPresetId
             );
           }).length > 0
         );
-      } else if (key == "audio") {
+      } else if (key === "audio") {
         return (
           this.detail.existingTranscodes.filter(preset => {
             return (
-              preset.audioPreset == id &&
-              preset.videoPreset == this.settings.videoPresetId
+              preset.audioPreset === id &&
+              preset.videoPreset === this.settings.videoPresetId
             );
           }).length > 0
         );
@@ -137,7 +175,7 @@ export default {
         this.detail = response.data;
       }
     );
-    if (this.settings.videoPresetId == -1) {
+    if (this.settings.videoPresetId === -1) {
       if (this.presets.length > 0) {
         this.settings.videoPresetId = this.presets.videoPresets[
           Object.keys(this.presets.videoPresets)[0]
@@ -146,7 +184,7 @@ export default {
         this.settings.videoPresetId = 1;
       }
     }
-    if (this.settings.audioPresetId == -1) {
+    if (this.settings.audioPresetId === -1) {
       if (this.presets.length > 0) {
         this.settings.audioPresetId = this.presets.audioPresets[
           Object.keys(this.presets.audioPresets)[0]
@@ -163,9 +201,8 @@ export default {
 @import "../style.scss";
 
 .card {
-  margin: 0 auto;
   float: none;
-  margin-bottom: 10px;
+  margin: 0 auto 10px;
   background-color: $dark-gray;
 }
 .card-body {
