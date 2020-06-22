@@ -22,6 +22,7 @@ import VideoPlayer from "@/components/VideoPlayer.vue";
 import StreamsServices from "../services/StreamsServices";
 import NProgress from "nprogress";
 import CookieService from "../services/CookieSerice";
+import {mapActions, mapState} from "vuex";
 
 //import { mapState, mapActions } from "vuex";
 
@@ -35,10 +36,11 @@ export default {
       player: null,
       stream_link: "",
       loading: false,
-      detail :null
+      detail: null
     };
   },
   created() {
+    this.fetchAllSettings();
     this.loading = true;
     NProgress.start();
     let token = CookieService.getToken();
@@ -47,7 +49,7 @@ export default {
         this.detail = response.data;
       }
     );
-    StreamsServices.getStream(this.stream_id, this.settings,token)
+    StreamsServices.getStream(this.stream_id, this.settings, token)
       .then(response => {
         this.stream_link = response.data.stream_link;
       })
@@ -56,21 +58,25 @@ export default {
         this.loading = false;
         this.keepAlive();
         this.interval = setInterval(this.keepAlive, 20000);
-      }).catch(error => {
-      const notification = {
-        type: "error",
-        message: "There was a problem fetching the Video: " + error.message
-      };
-      this.$store.dispatch("notification/addNotification", notification, { root: true });
-    });
+      })
+      .catch(error => {
+        const notification = {
+          type: "error",
+          message: "There was a problem fetching the Video: " + error.message
+        };
+        this.$store.dispatch("notification/addNotification", notification, {
+          root: true
+        });
+      });
   },
-  beforeDestroy(){
-    if(this.interval){
+  beforeDestroy() {
+    if (this.interval) {
       clearInterval(this.interval);
     }
   },
-  props: ["stream_id", "settings"],
+  props: ["stream_id"],
   computed: {
+    ...mapState("settings", ["settings"]),
     videoOptions() {
       return {
         autoplay: true,
@@ -83,20 +89,21 @@ export default {
             type: "application/dash+xml"
           }
         ],
-        poster: "http://placehold.it/380?text="+this.detail.name
+        poster: "http://placehold.it/380?text=" + this.detail.name
       };
     }
   },
+
   methods: {
+    ...mapActions("settings", ["fetchAllSettings"]),
     keepAlive() {
-        StreamsServices.postKeepAlive({
-          token: CookieService.getToken(),
-          audiopreset: this.settings.videoPresetId,
-          videopreset: this.settings.audioPresetId,
-          transcodedVideoUri: this.stream_link
-        }).then(() => {});
+      StreamsServices.postKeepAlive({
+        token: CookieService.getToken(),
+        audiopreset: this.settings.videoPresetId,
+        videopreset: this.settings.audioPresetId,
+        transcodedVideoUri: this.stream_link
+      }).then(() => {});
     }
   }
 };
 </script>
-

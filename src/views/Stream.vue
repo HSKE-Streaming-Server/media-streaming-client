@@ -16,7 +16,7 @@
                   class="btn"
                   :to="{
                 name: 'play-now',
-                params: { stream_id: stream_id, settings: settings }
+                params: { stream_id: stream_id}
               }"
                   v-on:click.native="addToHistory(stream_id)"
                 >Play Now</router-link>
@@ -84,7 +84,7 @@
 <script>
 import StreamsServices from "../services/StreamsServices";
 import CookieSerice from "../services/CookieSerice";
-import { mapState, mapActions } from "vuex";
+import { mapActions , mapState} from "vuex";
 
 export default {
   name: "Stream",
@@ -99,22 +99,32 @@ export default {
     ...mapState("settings", ["settings"])
   },
   methods: {
+    ...mapActions("settings", ["fetchAllSettings"]),
     ...mapActions("presets", ["fetchAllPresets"]),
     ...mapActions("history", ["addToHistory"]),
-    ...mapActions("settings", ["fetchAllSettings"]),
     setSetting: function(key, value) {
       this.settings[key] = value;
     },
-    isTrancoded:function(key, id){
-      if(this.detail.existingTranscodes.length == 0)return false;
-      if(key=="video"){
-        return this.detail.existingTranscodes.filter((preset)=>{
-          return preset.videoPreset == id && preset.audioPreset == this.settings.audioPresetId;
-        }).length>0;
-      }else if(key=="audio"){
-        return this.detail.existingTranscodes.filter((preset)=>{
-          return preset.audioPreset == id && preset.videoPreset == this.settings.videoPresetId;
-        }).length>0;
+    isTrancoded: function(key, id) {
+      if (this.detail.existingTranscodes.length == 0) return false;
+      if (key == "video") {
+        return (
+          this.detail.existingTranscodes.filter(preset => {
+            return (
+              preset.videoPreset == id &&
+              preset.audioPreset == this.settings.audioPresetId
+            );
+          }).length > 0
+        );
+      } else if (key == "audio") {
+        return (
+          this.detail.existingTranscodes.filter(preset => {
+            return (
+              preset.audioPreset == id &&
+              preset.videoPreset == this.settings.videoPresetId
+            );
+          }).length > 0
+        );
       }
     }
   },
@@ -174,22 +184,21 @@ export default {
   }
 }
 
-.dropdown-menu{
+.dropdown-menu {
   background-color: $gray !important;
 }
 
-.dropdown-item:hover{
+.dropdown-item:hover {
   cursor: pointer;
 }
 
-.preset{
+.preset {
   background-color: $gray !important;
   color: $white;
 }
 
-.preset.already-transcoded{
+.preset.already-transcoded {
   background-color: $neon-blue-green !important;
   color: $black;
 }
-
 </style>
