@@ -23,9 +23,6 @@ import VideoPlayer from "../components/VideoPlayer.vue";
 import StreamsServices from "../services/StreamsServices";
 import NProgress from "nprogress";
 import CookieService from "../services/CookieSerice";
-import { mapActions, mapState } from "vuex";
-
-//import { mapState, mapActions } from "vuex";
 
 export default {
   name: "VueVideoPlayer",
@@ -41,7 +38,6 @@ export default {
     };
   },
   created() {
-    this.fetchAllSettings();
     this.loading = true;
     NProgress.start();
     let token = CookieService.getToken();
@@ -75,9 +71,8 @@ export default {
       clearInterval(this.interval);
     }
   },
-  props: ["stream_id"],
+  props: ["stream_id","settings"],
   computed: {
-    ...mapState("settings", ["settings"]),
     videoOptions() {
       return {
         autoplay: true,
@@ -96,7 +91,6 @@ export default {
   },
 
   methods: {
-    ...mapActions("settings", ["fetchAllSettings"]),
     keepAlive() {
       StreamsServices.postKeepAlive({
         token: CookieService.getToken(),
