@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import NProgress from "nprogress";
-import store from "../store"
+import store from "../store";
 
 Vue.use(VueRouter);
 
@@ -27,8 +27,8 @@ const routes = [
         props: true,
         beforeEnter(routeTo, routeFrom, next) {
           store.dispatch("source/fetchAllSources").then(() => {
-            next()
-          })
+            next();
+          });
         }
       },
       {
@@ -37,16 +37,18 @@ const routes = [
         name: "contents",
         props: true,
         beforeEnter(routeTo, routeFrom, next) {
-          store.dispatch("media/fetchAllMedia", routeTo.params.source).then(() => {
-            next()
-          })
+          store
+            .dispatch("media/fetchAllMedia", routeTo.params.source)
+            .then(() => {
+              next();
+            });
         }
       },
       {
         path: ":source/video/:stream_id",
         component: () => import("../views/Stream.vue"),
         name: "stream",
-        props: true,
+        props: true
       },
       {
         path: ":source/video/:stream_id/play",
@@ -91,21 +93,21 @@ const router = new VueRouter({
 });
 
 router.beforeEach((routeTo, routeFrom, next) => {
-  NProgress.start()
-  const publicPages = ['/login'];
+  NProgress.start();
+  const publicPages = ["/login"];
   if (!publicPages.includes(routeTo.path)) {
-    store.dispatch("authentication/authenticate").then((loggedIn) => {
+    store.dispatch("authentication/authenticate").then(loggedIn => {
       if (!loggedIn) {
-        next('/login');
+        next("/login");
       }
       next();
-    })
+    });
   }
   next();
 });
 
 router.afterEach(() => {
-  NProgress.done()
-})
+  NProgress.done();
+});
 
 export default router;

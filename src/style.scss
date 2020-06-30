@@ -6,6 +6,7 @@ $neon-blue: rgb(0, 255, 255);
 $neon-blue-green: rgb(68, 255, 140);
 $neon-green: rgb(136, 255, 24);
 
+//noinspection CssNoGenericFontName
 .font {
   font-family: Helvetica;
 }
@@ -20,21 +21,21 @@ $neon-green: rgb(136, 255, 24);
 }
 
 .glow {
-  -webkit-box-shadow: 0px 0px 6px 0px $neon-green, 0px 0px 14px -0px $neon-blue;
-  -moz-box-shadow: 0px 0px 6px 0px $neon-green, 0px 0px 14px -0px $neon-blue;
-  box-shadow: 0px 0px 6px 0px $neon-green, 0px 0px 14px -0px $neon-blue;
+  -webkit-box-shadow: 0 0 6px 0 $neon-green, 0 0 14px -0px $neon-blue;
+  -moz-box-shadow: 0 0 6px 0 $neon-green, 0 0 14px -0px $neon-blue;
+  box-shadow: 0 0 6px 0 $neon-green, 0 0 14px -0px $neon-blue;
 }
 
 .glow-right {
-  -webkit-box-shadow: 4px 0px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
-  -moz-box-shadow: 4px 0px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
-  box-shadow: 4px 0px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
+  -webkit-box-shadow: 4px 0 6px 0 $neon-green, 9px 0 14px -0px $neon-blue;
+  -moz-box-shadow: 4px 0 6px 0 $neon-green, 9px 0 14px -0px $neon-blue;
+  box-shadow: 4px 0 6px 0 $neon-green, 9px 0 14px -0px $neon-blue;
 }
 
 .glow-center {
-  -webkit-box-shadow: 4px 4px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
-  -moz-box-shadow: 4px 4px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
-  box-shadow: 4px 4px 6px 0px $neon-green, 9px 0px 14px -0px $neon-blue;
+  -webkit-box-shadow: 4px 4px 6px 0 $neon-green, 9px 0 14px -0px $neon-blue;
+  -moz-box-shadow: 4px 4px 6px 0 $neon-green, 9px 0 14px -0px $neon-blue;
+  box-shadow: 4px 4px 6px 0 $neon-green, 9px 0 14px -0px $neon-blue;
 }
 
 /* Scrollbar Style */

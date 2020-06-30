@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <template>
   <div class="Tile card p-3 my-3 shadow">
     <router-link :to="{ name: 'contents', params: { source: source } }">
@@ -26,9 +27,7 @@
                 stroke-dasharray
                 stroke-dashoffset="0"
                 font-family="none"
-                font-weight="none"
                 font-size="none"
-                text-anchor="none"
                 style="mix-blend-mode: normal"
               >
                 <path d="M0,172v-172h172v172z" fill="none" />

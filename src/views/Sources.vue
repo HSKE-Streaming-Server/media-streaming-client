@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <template>
   <div class="Sources">
     <div class="container">
@@ -12,8 +13,8 @@
 </template>
 <script>
 import { mapState } from "vuex";
-import Tile from "@/components/Tile.vue";
-import gsap from 'gsap'
+import Tile from "../components/Tile.vue";
+import gsap from "gsap";
 
 export default {
   name: "Sources",
@@ -25,20 +26,20 @@ export default {
     ...mapState("source", ["sources"])
   },
   mounted() {
-    gsap.from('.source', {
+    gsap.from(".source", {
       duration: 0.5,
-      opacity:0,
+      opacity: 0,
       scale: 0,
-      y:200,
-      ease: 'power1',
+      y: 200,
+      ease: "power1",
       stagger: 0.1
-    })
+    });
   }
 };
 </script>
 
 <style scoped lang="scss">
-  @import "../style.scss";
+@import "../style.scss";
 .zoom {
   transition: transform 0.2s;
 }

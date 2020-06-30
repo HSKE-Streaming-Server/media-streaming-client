@@ -16,10 +16,10 @@ export default {
   getMedia(category, token) {
     return apiClient.post("/api/media", { category: category, token: token });
   },
-  getStream(stream_id, settings,token) {
+  getStream(stream_id, settings, token) {
     return apiClient.post("/api/stream", {
       stream_id: stream_id,
-      settings: settings, 
+      settings: settings,
       token: token
     });
   },

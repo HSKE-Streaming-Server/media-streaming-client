@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <template>
   <div class="h-100">
     <div v-if="loading" class="h-100">
@@ -18,7 +19,7 @@
 </template>
 
 <script>
-import VideoPlayer from "@/components/VideoPlayer.vue";
+import VideoPlayer from "../components/VideoPlayer.vue";
 import StreamsServices from "../services/StreamsServices";
 import NProgress from "nprogress";
 import CookieService from "../services/CookieSerice";

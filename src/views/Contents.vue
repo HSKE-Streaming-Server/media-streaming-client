@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <template>
   <div class="Contents py-4">
     <h1 class="text-center">{{ source | uppercase }} MEDIATHEK</h1>
@@ -6,7 +7,7 @@
 </template>
 <script>
 import { mapState } from "vuex";
-import Carusel from "@/components/Carusel.vue";
+import Carusel from "../components/Carusel.vue";
 
 export default {
   name: "Contents",
@@ -31,8 +32,8 @@ export default {
 <style scoped lang="scss">
 @import "../style.scss";
 h1 {
-background: -webkit-linear-gradient($neon-green, $neon-blue);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
+  background: -webkit-linear-gradient($neon-green, $neon-blue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 </style>
